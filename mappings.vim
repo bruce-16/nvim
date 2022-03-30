@@ -12,6 +12,9 @@ nnoremap <silent>w- :vertical resize -10<cr>
 nnoremap <silent>w; :resize +5<cr>
 nnoremap <silent>w, :resize -5<cr>
 
+nnoremap <silent>gt :tabnext<cr>
+nnoremap <silent>gT :tabprevious<cr>
+
 inoremap <c-u> <esc>guiw
 inoremap jk <esc>
 
