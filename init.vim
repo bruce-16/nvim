@@ -12,9 +12,9 @@ endif
 
 
 if exists('g:vscode')
-  source ~/.dotfiles/vim/vscode/general.vim
+  source ~/.config/nvim/vscode/general.vim
 else
-  source ~/.dotfiles/vim/plugins.vim
-  source ~/.dotfiles/vim/mappings.vim
-  source ~/.dotfiles/vim/general.vim
+  source ~/.config/nvim/plugins.vim
+  source ~/.config/nvim/mappings.vim
+  source ~/.config/nvim/general.vim
 endif

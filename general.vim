@@ -67,7 +67,6 @@ set updatetime=100
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
-
 " fzf
 set rtp+=/usr/local/opt/fzf
 

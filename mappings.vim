@@ -20,7 +20,7 @@ inoremap jk <esc>
 
 
 " reload vimrc
-nnoremap <leader>vr :source ~/.dotfiles/vim/init.vim<CR>
+nnoremap <leader>vr :source ~/.config/nvim/init.vim<CR>
 "
 " 拷贝当前文件路径
 function GetCurFileReName()

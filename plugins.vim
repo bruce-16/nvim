@@ -4,6 +4,8 @@
 call plug#begin('~/.vim/plugged')
 "Plug 'morhetz/gruvbox' "主题
 Plug 'kaicataldo/material.vim'
+Plug 'liuchengxu/space-vim-theme'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 " motion
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
@@ -17,8 +19,8 @@ Plug 'peitalin/vim-jsx-typescript'
 " lightline
 Plug 'itchyny/lightline.vim'
 " fzf
- Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
- Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " telescope
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/plenary.nvim'
@@ -35,6 +37,8 @@ Plug 'raimondi/delimitMate'
 
 " 欢迎主页插件
 Plug 'mhinz/vim-startify'
+" lazygit
+Plug 'kdheepak/lazygit.nvim'
 
 call plug#end()
 
@@ -44,6 +48,9 @@ call plug#end()
 " 禁止提示
 " let g:coc_disable_startup_warning = 0
 "
+set updatetime=100
+set shortmess+=c
+set cmdheight=2
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -106,7 +113,7 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 " ===== lightline
 " =====
 let g:lightline = {
-  \ 'colorscheme': 'wombat',
+  \ 'colorscheme': 'one',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'cocstatus', 'currentStatus', 'filename', 'modified' ] ],
@@ -156,13 +163,17 @@ let g:startify_lists = [
 " 设置主题
 " colorscheme gruvbox
 " let g:material_theme_style = 'default' | 'palenight' | 'ocean' | 'lighter' | 'darker'
-let g:material_theme_style = 'default'
-colorscheme material
+"let g:material_theme_style = 'palenight'
+"colorscheme space_vim_theme
+set background=light
+let $BAT_THEME='OneHalfLight'
+colorscheme onehalflight
 
 " ===
 " === FZF
 " ===
-noremap <silent> <leader>p :GFiles<CR>
+"noremap <silent> <leader>p :GFiles<CR>
+"noremap <silent> <leader>fb :Buffers<CR>
 noremap <silent> <leader>fh :History<CR>
 noremap <silent> <leader>fl :Lines<CR>
 let g:fzf_preview_window = ['up:45%', 'ctrl-/']
@@ -242,9 +253,22 @@ require('telescope').setup({
 require('telescope').load_extension('fzf')
 EOF
 
-nnoremap <Leader>ff :lua require'telescope.builtin'.find_files(require('telescope.themes').get_ivy())<cr>
-noremap <leader>fg :lua require'telescope.builtin'.git_files(require('telescope.themes').get_ivy())<cr>
+"nnoremap <Leader>ff :lua require'telescope.builtin'.find_files(require('telescope.themes').get_ivy())<cr>
+noremap <leader>p :lua require'telescope.builtin'.git_files(require('telescope.themes').get_ivy())<cr>
 nnoremap <leader>fb :lua require'telescope.builtin'.buffers(require('telescope.themes').get_ivy())<cr>
-nnoremap <leader>fr :lua require'telescope.builtin'.treesitter(require('telescope.themes').get_ivy())<cr>
+nnoremap <leader>fm :lua require'telescope.builtin'.marks(require('telescope.themes').get_ivy())<cr>
+nnoremap <leader>ff :lua require'telescope.builtin'.grep_string(require('telescope.themes').get_ivy())<cr>
+"nnoremap <leader>fr :lua require'telescope.builtin'.treesitter(require('telescope.themes').get_ivy())<cr>
 " git 
 nnoremap <leader>gs :lua require'telescope.builtin'.git_status(require('telescope.themes').get_ivy())<cr>
+
+" ===
+" === lazygit
+" ===
+let g:lazygit_floating_window_winblend = 0 " transparency of floating window
+let g:lazygit_floating_window_scaling_factor = 0.9 " scaling factor for floating window
+let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
+let g:lazygit_floating_window_use_plenary = 0 " use plenary.nvim to manage floating window if available
+let g:lazygit_use_neovim_remote = 0 " fallback to 0 if neovim-remote is not installed
+
+nnoremap <silent> <leader>gg :LazyGit<CR>
