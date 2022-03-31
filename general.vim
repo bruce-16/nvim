@@ -10,7 +10,7 @@
  set noerrorbells "出错时，不要发出响声。
 
 set visualbell "出错时，发出视觉提示，通常是屏幕闪烁。
- set history=1000 "Vim 需要记住多少次历史操作。
+set history=1000 "Vim 需要记住多少次历史操作。
 
 "打开文件监视。如果在编辑过程中文件发生外部改变（比如被别的编辑器编辑了），就会发出提示。set autoread "打开文件监视。如果在编辑过程中文件发生外部改变（比如被别的编辑器编辑了），就会发出提示。
 " set autoread
@@ -22,7 +22,6 @@ set wildmode=full
 syntax on  "开启语法高亮
 set ruler "显示标尺 
 set showcmd "输入的命令显示出来，看的清楚些 
-set cmdheight=1 "命令行（在状态行下）的高度，设置为1 
 set laststatus=1 "启动显示状态行(1),总是显示状态行(2) 
 set foldenable "允许折叠 
 set foldmethod=manual "手动折叠 
@@ -32,7 +31,6 @@ set relativenumber "显示相对行号
 "filetype indent on "设置不同文件自动缩进
 set cursorline "高亮当前行
 "set nowrap "关闭自动折行
-set  ruler "在状态栏显示光标的当前位置（位于哪一行哪一列）。
 set laststatus=2 "是否显示状态栏。0 表示不显示，1 表示只在多窗口时显示，2 表示显示。
 
 " 编辑设置

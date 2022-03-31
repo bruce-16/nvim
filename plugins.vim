@@ -196,7 +196,7 @@ command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case --glob "!{node_modules/*,.git/*}" -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
-noremap <silent> <leader>fs :Rg<CR>
+"noremap <silent> <leader>fs :Rg<CR>
 
 " rg 完整单词搜索
 function! RipgrepFzfWord(query, fullscreen)
@@ -239,6 +239,26 @@ require('telescope').setup({
     layout_config = { width = 0.9 },
     wrap_results = 1,
   },
+  pickers = {
+    find_files = {
+      theme = "ivy",
+    },
+    git_files = {
+      theme = "ivy",
+    },
+    buffers = {
+      theme = "ivy",
+    },
+    marks = {
+      theme = "ivy",
+    },
+    live_grep = {
+      theme = "ivy",
+    },
+    grep_string = {
+      theme = "ivy",
+    }
+  },
   extensions = {
     fzf = {
       fuzzy = true,                    -- false will only do exact matching
@@ -254,10 +274,11 @@ require('telescope').load_extension('fzf')
 EOF
 
 "nnoremap <Leader>ff :lua require'telescope.builtin'.find_files(require('telescope.themes').get_ivy())<cr>
-noremap <leader>p :lua require'telescope.builtin'.git_files(require('telescope.themes').get_ivy())<cr>
+noremap <leader>p :Telescope git_files<cr>
+"nnoremap <leader>ff :Telescope grep_string<cr>
+nnoremap <leader>fs :Telescope live_grep<cr>
 nnoremap <leader>fb :lua require'telescope.builtin'.buffers(require('telescope.themes').get_ivy())<cr>
 nnoremap <leader>fm :lua require'telescope.builtin'.marks(require('telescope.themes').get_ivy())<cr>
-nnoremap <leader>ff :lua require'telescope.builtin'.grep_string(require('telescope.themes').get_ivy())<cr>
 "nnoremap <leader>fr :lua require'telescope.builtin'.treesitter(require('telescope.themes').get_ivy())<cr>
 " git 
 nnoremap <leader>gs :lua require'telescope.builtin'.git_status(require('telescope.themes').get_ivy())<cr>
