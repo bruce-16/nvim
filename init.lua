@@ -15,6 +15,11 @@ require("plugin-config.dashboard")
 require("plugin-config.project")
 require("plugin-config.nvim-treesitter")
 
+-- coding 配置
+require("plugin-config.nvim-comment")
+-- gitsigns 配置
+require("plugin-config.gitsigns")
+
 -- lsp
 require("lsp.setup")
-require('lsp.cmp')
+require("lsp.cmp")

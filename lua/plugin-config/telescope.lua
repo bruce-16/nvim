@@ -38,10 +38,18 @@ telescope.setup({
       override_file_sorter = true,     -- override the file sorter
       case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
                                        -- the default case_mode is "smart_case"
+    },
+    lazygit = {
+      lazygit_floating_window_winblend = 0, -- transparency of floating window
+      lazygit_floating_window_scaling_factor = 0.9, -- scaling factor for floating window
+      lazygit_floating_window_corner_chars = { '╭', '╮', '╰', '╯' }, -- customize lazygit popup window corner characters
+      lazygit_floating_window_use_plenary = 0, -- use plenary.nvim to manage floating window if available
+      lazygit_use_neovim_remote = 0, -- fallback to 0 if neovim-remote is not installed
     }
   },
 })
 
 pcall(telescope.load_extension, "fzf")
 pcall(telescope.load_extension, "env")
+pcall(telescope.load_extension, "lazygit")
 

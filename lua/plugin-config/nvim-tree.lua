@@ -10,7 +10,7 @@ local list_keys = require('keybindings').nvimTreeList
 nvim_tree.setup({
   -- 不显示 git 状态图标
   git = {
-    enable = false,
+    enable = true,
   },
   -- project plugin 需要这样设置
   update_cwd = true,

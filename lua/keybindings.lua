@@ -100,6 +100,18 @@ map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
 map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
 map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
 
+--=============
+--============= nvim-comment
+--=============
+pluginKeys.nvimCommentList = {
+  -- Normal mode mapping left hand side
+  line_mapping = "gcc",
+  -- Visual/Operator mapping left hand side
+  operator_mapping = "gc",
+  -- text object mapping, comment chunk,,
+  comment_chunk_text_object = "ic",
+}
+
 --
 --===========
 --=========== telescope
@@ -115,13 +127,13 @@ map("n", "<leader>fm", ":Telescope marks<CR>", opt)
 pluginKeys.telescopeList = {
   i = {
     -- 上下移动
-    ["<C-j>"] = "move_selection_next",
-    ["<C-k>"] = "move_selection_previous",
+    -- ["<C-j>"] = "move_selection_next",
+    -- ["<C-k>"] = "move_selection_previous",
     ["<Down>"] = "move_selection_next",
     ["<Up>"] = "move_selection_previous",
     -- 历史记录
-    ["<C-n>"] = "cycle_history_next",
-    ["<C-p>"] = "cycle_history_prev",
+    -- ["<C-n>"] = "cycle_history_next",
+    -- ["<C-p>"] = "cycle_history_prev",
     -- 关闭窗口
     ["<C-c>"] = "close",
     -- 预览窗口上下滚动
@@ -226,6 +238,27 @@ pluginKeys.cmp = function(cmp)
       end
     end, {"i", "s"})
   }
+end
+
+--========
+--======== lazygit
+--========
+map("n", "<leader>gg", "<cmd>LazyGit<CR>", opt)
+
+--========
+--======== gitsigns
+--========
+pluginKeys.mapGitSigns = function(mapbuf)
+  -- Navigation
+  mapbuf('n', ']g', ':Gitsigns next_hunk<CR>', {expr=true})
+  mapbuf('n', '[g', ':Gitsigns prev_hunk<CR>', {expr=true})
+  -- Actions
+  mapbuf('n', '<leader>hr', ':Gitsigns reset_hunk<CR>', opt)
+  mapbuf('v', '<leader>hr', ':Gitsigns reset_hunk<CR>', opt)
+  mapbuf('n', '<leader>hr', ':Gitsigns reset_buffer<CR>', opt)
+  mapbuf('n', '<leader>hp', ':Gitsigns preview_hunk<CR>', opt)
+  mapbuf('n', '<leader>tb', ':Gitsigns toggle_current_line_blame<CR>', opt)
+  mapbuf('n', '<leader>hd', ':Gitsigns diffthis<CR>', opt)
 end
 
 return pluginKeys

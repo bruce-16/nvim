@@ -14,7 +14,7 @@ packer.startup(
     use("arkav/lualine-lsp-progress")
     use({'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }})
     -- telescope
-    use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim" } }
+    use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim", { "kdheepak/lazygit.nvim" } } }
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use { "LinArcX/telescope-env.nvim" }
     -- dashboard-nvim (新增)
@@ -23,6 +23,10 @@ packer.startup(
     use("ahmedkhalf/project.nvim")
     -- treesitter （新增）
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+    -- coding 工具类
+    use 'tpope/vim-surround'
+    use 'easymotion/vim-easymotion'
+    use "terrortylor/nvim-comment"
     -- lspconfig
     use({ "neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer" })
     -- 补全引擎
@@ -35,9 +39,10 @@ packer.startup(
     use("hrsh7th/cmp-buffer") -- { name = 'buffer' },
     use("hrsh7th/cmp-path") -- { name = 'path' }
     use("hrsh7th/cmp-cmdline") -- { name = 'cmdline' }
-
     -- 常见编程语言代码段
     use("rafamadriz/friendly-snippets")
+    -- git
+    use 'lewis6991/gitsigns.nvim'
 end)
 
 
