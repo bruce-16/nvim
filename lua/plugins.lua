@@ -14,7 +14,8 @@ packer.startup(
     use("arkav/lualine-lsp-progress")
     use({'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }})
     -- telescope
-    use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim", { "kdheepak/lazygit.nvim" } } }
+    use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim" } }
+    -- use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim", { "kdheepak/lazygit.nvim" } } }
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use { "LinArcX/telescope-env.nvim" }
     -- dashboard-nvim (新增)

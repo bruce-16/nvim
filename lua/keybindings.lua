@@ -243,22 +243,22 @@ end
 --========
 --======== lazygit
 --========
-map("n", "<leader>gg", "<cmd>LazyGit<CR>", opt)
+-- map("n", "<leader>gg", "<cmd>LazyGit<CR>", opt)
 
 --========
 --======== gitsigns
 --========
 pluginKeys.mapGitSigns = function(mapbuf)
   -- Navigation
-  mapbuf('n', ']g', ':Gitsigns next_hunk<CR>', {expr=true})
-  mapbuf('n', '[g', ':Gitsigns prev_hunk<CR>', {expr=true})
+  mapbuf('n', ']g', ':Gitsigns next_hunk<CR>', opt)
+  mapbuf('n', '[g', ':Gitsigns prev_hunk<CR>', opt)
   -- Actions
-  mapbuf('n', '<leader>hr', ':Gitsigns reset_hunk<CR>', opt)
-  mapbuf('v', '<leader>hr', ':Gitsigns reset_hunk<CR>', opt)
-  mapbuf('n', '<leader>hr', ':Gitsigns reset_buffer<CR>', opt)
-  mapbuf('n', '<leader>hp', ':Gitsigns preview_hunk<CR>', opt)
-  mapbuf('n', '<leader>tb', ':Gitsigns toggle_current_line_blame<CR>', opt)
-  mapbuf('n', '<leader>hd', ':Gitsigns diffthis<CR>', opt)
+  mapbuf('n', '<leader>sr', ':Gitsigns reset_hunk<CR>', opt)
+  mapbuf('v', '<leader>sr', ':Gitsigns reset_hunk<CR>', opt)
+  mapbuf('n', '<leader>sR', ':Gitsigns reset_buffer<CR>', opt)
+  mapbuf('n', '<leader>sp', ':Gitsigns preview_hunk<CR>', opt)
+  mapbuf('n', '<leader>sb', ':Gitsigns toggle_current_line_blame<CR>', opt)
+  mapbuf('n', '<leader>sd', ':Gitsigns diffthis<CR>', opt)
 end
 
 return pluginKeys
