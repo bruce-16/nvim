@@ -44,6 +44,8 @@ packer.startup(
     use("rafamadriz/friendly-snippets")
     -- git
     use 'lewis6991/gitsigns.nvim'
+    -- replace
+    use 'brooth/far.vim'
 end)
 
 
