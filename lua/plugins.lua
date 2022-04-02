@@ -5,7 +5,7 @@ packer.startup(
     use 'wbthomason/packer.nvim'
     -- 主题
     use 'folke/tokyonight.nvim'
-    use("ful1e5/onedark.nvim")
+    use 'ful1e5/onedark.nvim'
     use({ "ellisonleao/gruvbox.nvim", requires = { "rktjmp/lush.nvim" } })
     -- tree
     use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
