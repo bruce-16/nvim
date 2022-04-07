@@ -14,6 +14,8 @@ require("plugin-config.telescope")
 require("plugin-config.dashboard")
 require("plugin-config.project")
 require("plugin-config.nvim-treesitter")
+require("plugin-config.lsp_signature")
+require("plugin-config.lightbulb")
 
 -- coding 配置
 require("plugin-config.nvim-comment")
@@ -23,3 +25,4 @@ require("plugin-config.gitsigns")
 -- lsp
 require("lsp.setup")
 require("lsp.cmp")
+--

@@ -15,7 +15,7 @@ local opts = {
     root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git")
   },
   flags = {
-    debounce_text_changes = 150,
+    debounce_text_changes = 300,
   },
   on_attach = function(client, bufnr)
     -- 禁用格式化功能，交给专门插件插件处理
