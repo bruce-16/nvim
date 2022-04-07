@@ -92,7 +92,7 @@ vim.o.showmode = false
 vim.o.foldenable = true
 vim.o.foldmethod = 'manual'
 -- 遇到括号时，显示匹配高亮
-vim.o.showmatch = true
+vim.o.showmatch = false
 -- 出错时，不要发出响声
 vim.g.noerrorbells = true
 -- 出错时，发出视觉提示，通常是屏幕闪烁
