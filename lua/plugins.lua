@@ -30,6 +30,10 @@ packer.startup(
     use "terrortylor/nvim-comment"
     -- lspconfig
     use({ "neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer" })
+    -- 函数参数提示
+    use "ray-x/lsp_signature.nvim"
+    -- 灯泡提示代码行为
+    use "kosayoda/nvim-lightbulb"
     -- 补全引擎
     use("hrsh7th/nvim-cmp")
     -- snippet 引擎

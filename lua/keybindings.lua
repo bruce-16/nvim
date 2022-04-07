@@ -49,6 +49,13 @@ map("i", "<C-h>", "<ESC>I", opt)
 map("i", "<C-l>", "<ESC>A", opt)
 -- insert 模式下，jk 表示 esj
 map("i", "jk", "<ESC>", opt)
+-- 自动补齐括号
+map("i", "'", "''<ESC>i", opt)
+map("i", "\"", "\"\"<ESC>i", opt)
+map("i", "<", "<><ESC>i", opt)
+map("i", "(", "()<ESC>i", opt)
+map("i", "[", "[]<ESC>i", opt)
+map("i", "{", "{}<ESC>i", opt)
 -- 重新加载配置文件
 map("n", "<leader>vr", ":source ~/.config/nvim/init.lua<CR>", opt)
 -- 取消搜索高亮
@@ -155,7 +162,7 @@ pluginKeys.mapLSP = function(mapbuf)
   mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
   mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
   mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
-  mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
+  mapbuf("n", "gr", "<cmd>Telescope lsp_references<CR>", opt)
   -- diagnostic
   mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
   mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
@@ -260,5 +267,10 @@ pluginKeys.mapGitSigns = function(mapbuf)
   mapbuf('n', '<leader>sb', ':Gitsigns toggle_current_line_blame<CR>', opt)
   mapbuf('n', '<leader>sd', ':Gitsigns diffthis<CR>', opt)
 end
+
+-- ======
+-- ====== 函数参数提示
+-- ======
+pluginKeys.lsp_signature_key = '<C-j>'
 
 return pluginKeys
