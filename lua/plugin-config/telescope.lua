@@ -10,6 +10,8 @@ telescope.setup({
     initial_mode = "insert",
     -- 窗口内快捷键
     mappings = require("keybindings").telescopeList,
+    -- 搜索面板结果太长会自动换行
+    wrap_results = 1,
   },
   pickers = {
     find_files = {
