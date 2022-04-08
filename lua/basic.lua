@@ -90,7 +90,8 @@ vim.o.showtabline = 2
 vim.o.showmode = false
 -- 允许折叠
 vim.o.foldenable = true
-vim.o.foldmethod = 'manual'
+vim.o.foldmethod = 'indent'
+vim.o.foldlevel = 99
 -- 遇到括号时，显示匹配高亮
 vim.o.showmatch = false
 -- 出错时，不要发出响声

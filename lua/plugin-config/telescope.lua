@@ -29,7 +29,10 @@ telescope.setup({
     },
     grep_string = {
       theme = "ivy",
-    }
+    },
+    lsp_references = {
+      theme = "ivy",
+    },
   },
   extensions = {
     fzf = {
@@ -51,5 +54,5 @@ telescope.setup({
 
 pcall(telescope.load_extension, "fzf")
 pcall(telescope.load_extension, "env")
-pcall(telescope.load_extension, "lazygit")
+-- pcall(telescope.load_extension, "lazygit")
 

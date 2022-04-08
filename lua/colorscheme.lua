@@ -1,6 +1,6 @@
 vim.g.tokyonight_transparent = true
 vim.g.tokyonight_transparent_sidebar = true
-local colorscheme = "gruvbox"
+local colorscheme = "tokyonight"
 
 -- onedark
 -- tokyonight
