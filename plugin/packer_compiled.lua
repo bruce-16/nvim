@@ -69,11 +69,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["bufferline.nvim"] = {
-    loaded = true,
-    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
-    url = "https://github.com/akinsho/bufferline.nvim"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -129,6 +124,16 @@ _G.packer_plugins = {
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
     url = "https://github.com/ray-x/lsp_signature.nvim"
   },
+  ["lspkind-nvim"] = {
+    loaded = true,
+    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
+    url = "https://github.com/onsails/lspkind-nvim"
+  },
+  ["lspsaga.nvim"] = {
+    loaded = true,
+    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
+    url = "https://github.com/tami5/lspsaga.nvim"
+  },
   ["lualine-lsp-progress"] = {
     loaded = true,
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/lualine-lsp-progress",
@@ -144,6 +149,11 @@ _G.packer_plugins = {
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/lush.nvim",
     url = "https://github.com/rktjmp/lush.nvim"
   },
+  ["nord-vim"] = {
+    loaded = true,
+    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/nord-vim",
+    url = "https://github.com/arcticicestudio/nord-vim"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -153,11 +163,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/nvim-comment",
     url = "https://github.com/terrortylor/nvim-comment"
-  },
-  ["nvim-lightbulb"] = {
-    loaded = true,
-    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/nvim-lightbulb",
-    url = "https://github.com/kosayoda/nvim-lightbulb"
   },
   ["nvim-lsp-installer"] = {
     loaded = true,
@@ -223,11 +228,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
-  },
-  ["vim-bbye"] = {
-    loaded = true,
-    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/vim-bbye",
-    url = "https://github.com/moll/vim-bbye"
   },
   ["vim-easymotion"] = {
     loaded = true,

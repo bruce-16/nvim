@@ -7,10 +7,12 @@ packer.startup(
     use 'folke/tokyonight.nvim'
     use 'ful1e5/onedark.nvim'
     use({ "ellisonleao/gruvbox.nvim", requires = { "rktjmp/lush.nvim" } })
+    use 'arcticicestudio/nord-vim'
     -- tree
     use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
     -- bufferline
-    use({ "akinsho/bufferline.nvim", requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" }})
+    -- use({ "akinsho/bufferline.nvim", requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" }})
+    -- lualine
     use("arkav/lualine-lsp-progress")
     use({'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }})
     -- telescope
@@ -32,8 +34,6 @@ packer.startup(
     use({ "neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer" })
     -- 函数参数提示
     use "ray-x/lsp_signature.nvim"
-    -- 灯泡提示代码行为
-    use "kosayoda/nvim-lightbulb"
     -- 补全引擎
     use("hrsh7th/nvim-cmp")
     -- snippet 引擎
@@ -48,11 +48,13 @@ packer.startup(
     use("rafamadriz/friendly-snippets")
     -- git
     use 'lewis6991/gitsigns.nvim'
+    -- 补全 ui 插件
+    -- 图标集
+    use 'onsails/lspkind-nvim'
+    use 'tami5/lspsaga.nvim'
     -- replace
     use 'brooth/far.vim'
 end)
-
-
 
 -- 每次保存 plugins.lua 自动安装插件
 pcall(
