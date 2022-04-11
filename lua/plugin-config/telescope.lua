@@ -20,6 +20,9 @@ telescope.setup({
     git_files = {
       theme = "ivy",
     },
+    git_status = {
+      theme = "ivy",
+    },
     buffers = {
       theme = "ivy",
     },

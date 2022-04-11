@@ -125,11 +125,12 @@ pluginKeys.nvimCommentList = {
 --===========
 -- Telescope
 -- 查找文件
-map("n", "<C-p>", "::Telescope git_files<CR>", opt)
--- 全局搜索
-map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
+map("n", "<C-p>", ":Telescope git_files<CR>", opt)
 map("n", "<leader>fb", ":Telescope buffers<CR>", opt)
 map("n", "<leader>fm", ":Telescope marks<CR>", opt)
+map("n", "<leader>fs", ":Telescope git_status<CR>", opt)
+-- 全局搜索
+map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
 
 pluginKeys.telescopeList = {
   i = {
