@@ -1,5 +1,5 @@
 vim.g.dashboard_default_executive = "telescope"
-vim.g.dashboard_custom_footer = { "稍等，待我看看代码" }
+vim.g.dashboard_custom_footer = { "NB" }
 
 vim.g.dashboard_custom_section = {
   a = { description = { "  Projects              " }, command = "Telescope projects" },

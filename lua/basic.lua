@@ -103,3 +103,14 @@ vim.g.visualbell = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- yank 时高亮展示
+pcall(
+  vim.cmd,
+  [[
+  augroup highlight_yank
+  autocmd!
+  au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=150}
+  augroup END
+  ]]
+)
+

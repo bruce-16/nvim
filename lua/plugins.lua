@@ -54,6 +54,8 @@ packer.startup(
     use 'tami5/lspsaga.nvim'
     -- replace
     use 'brooth/far.vim'
+    -- tmux + vim navigator
+    use 'christoomey/vim-tmux-navigator'
 end)
 
 -- 每次保存 plugins.lua 自动安装插件
