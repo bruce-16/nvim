@@ -1,5 +1,5 @@
 vim.g.dashboard_default_executive = "telescope"
-vim.g.dashboard_custom_footer = { "NB" }
+-- vim.g.dashboard_custom_footer = { "NB" }
 
 vim.g.dashboard_custom_section = {
   a = { description = { "  Projects              " }, command = "Telescope projects" },
@@ -20,5 +20,5 @@ vim.g.dashboard_custom_header = {
   [[ ███████╗██║  ██║██║  ██║██║ ╚████║╚██████╔╝███████╗██║  ██║███████╗ ]],
   [[ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝ ]],
   [[                                                                     ]],
-  [[                      version 0.1.0                                  ]],
+  [[                      version 0.2.0                                  ]],
 }
