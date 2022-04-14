@@ -9,7 +9,8 @@
 vim.g.encoding = "UTF-8"
 vim.o.fileencoding = 'utf-8'
 -- 使用系统剪切板
-vim.o.clipboard = 'unnamed'
+vim.api.nvim_set_option("clipboard", "unnamedplus")
+vim.o.clipboard = 'unnamedplus'
 -- jkhl 移动时光标周围保留8行
 vim.o.scrolloff = 8
 vim.o.sidescrolloff = 8

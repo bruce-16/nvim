@@ -8,9 +8,12 @@ end
 -- 列表操作快捷键
 local list_keys = require('keybindings').nvimTreeList
 nvim_tree.setup({
-  -- 不显示 git 状态图标
+  auto_reload_on_write = true,
+  -- 显示 git 状态图标
   git = {
     enable = true,
+    ignore = true,
+    timeout = 400,
   },
   -- project plugin 需要这样设置
   update_cwd = true,
@@ -43,6 +46,7 @@ nvim_tree.setup({
     signcolumn = 'yes',
   },
   actions = {
+    use_sys_clipboard = true,
     open_file = {
       -- 首次打开大小适配
       resize_window = true,
