@@ -10,6 +10,7 @@ local servers = {
   rls = require "lsp.config.rust", -- lua/lsp/config/ts
   rust_analyzer = require "lsp.config.rust_analyzer", -- lua/lsp/config/rust_analyzer
   jsonls = require "lsp.config.json", -- lua/lsp/config/json
+  html = require "lsp.config.html", -- lua/lsp/config/html
   cssls = require "lsp.config.css", -- lua/lsp/config/css
   cssmodules_ls = require "lsp.config.cssmodule", -- lua/lsp/config/cssmodule
 }

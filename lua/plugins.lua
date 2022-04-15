@@ -21,7 +21,7 @@ packer.startup(
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use { "LinArcX/telescope-env.nvim" }
     -- dashboard-nvim (新增)
-    use("glepnir/dashboard-nvim")
+    -- use("glepnir/dashboard-nvim")
     -- project
     use("ahmedkhalf/project.nvim")
     -- treesitter （新增）
@@ -32,6 +32,7 @@ packer.startup(
     use "terrortylor/nvim-comment"
     -- lspconfig
     use({ "neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer" })
+    use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim" })
     -- 函数参数提示
     use "ray-x/lsp_signature.nvim"
     -- 补全引擎
@@ -46,8 +47,12 @@ packer.startup(
     use("hrsh7th/cmp-cmdline") -- { name = 'cmdline' }
     -- 常见编程语言代码段
     use("rafamadriz/friendly-snippets")
+    -- 代码格式化
+    use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
     -- git
     use 'lewis6991/gitsigns.nvim'
+    -- git diff
+    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
     -- 补全 ui 插件
     -- 图标集
     use 'onsails/lspkind-nvim'

@@ -15,6 +15,7 @@ require("plugin-config.dashboard")
 require("plugin-config.project")
 require("plugin-config.nvim-treesitter")
 require("plugin-config.lsp_signature")
+require("plugin-config.diffview")
 
 -- coding 配置
 require("plugin-config.nvim-comment")
@@ -25,4 +26,5 @@ require("plugin-config.gitsigns")
 require("lsp.setup")
 require("lsp.cmp")
 require("lsp.ui")
+require("lsp.null-ls")
 --

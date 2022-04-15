@@ -94,10 +94,10 @@ _G.packer_plugins = {
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
     url = "https://github.com/hrsh7th/cmp-vsnip"
   },
-  ["dashboard-nvim"] = {
+  ["diffview.nvim"] = {
     loaded = true,
-    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/dashboard-nvim",
-    url = "https://github.com/glepnir/dashboard-nvim"
+    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/diffview.nvim",
+    url = "https://github.com/sindrets/diffview.nvim"
   },
   ["far.vim"] = {
     loaded = true,
@@ -154,6 +154,11 @@ _G.packer_plugins = {
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/nord-vim",
     url = "https://github.com/arcticicestudio/nord-vim"
   },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -168,6 +173,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
     url = "https://github.com/williamboman/nvim-lsp-installer"
+  },
+  ["nvim-lsp-ts-utils"] = {
+    loaded = true,
+    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/nvim-lsp-ts-utils",
+    url = "https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
