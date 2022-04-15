@@ -324,7 +324,7 @@ pluginKeys.diffViewKeys = function(cb)
     },
     file_history_panel = {
       ["g!"]            = cb("options"),            -- Open the option panel
-      ["<C-O-D>"]       = cb("open_in_diffview"),   -- Open the entry under the cursor in a diffview
+      ["<c-o>"]       = cb("open_in_diffview"),   -- Open the entry under the cursor in a diffview
       ["y"]             = cb("copy_hash"),          -- Copy the commit hash of the entry under the cursor
       ["zR"]            = cb("open_all_folds"),
       ["zM"]            = cb("close_all_folds"),
