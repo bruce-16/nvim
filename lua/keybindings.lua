@@ -50,12 +50,13 @@ map("i", "<C-l>", "<ESC>A", opt)
 -- insert 模式下，jk 表示 esj
 map("i", "jk", "<ESC>", opt)
 -- 自动补齐括号
-map("i", "'", "''<ESC>i", opt)
-map("i", "\"", "\"\"<ESC>i", opt)
-map("i", "<", "<><ESC>i", opt)
-map("i", "(", "()<ESC>i", opt)
-map("i", "[", "[]<ESC>i", opt)
-map("i", "{", "{}<ESC>i", opt)
+-- 已经用插件代替
+-- map("i", "'", "''<ESC>i", opt)
+-- map("i", "\"", "\"\"<ESC>i", opt)
+-- map("i", "<", "<><ESC>i", opt)
+-- map("i", "(", "()<ESC>i", opt)
+-- map("i", "[", "[]<ESC>i", opt)
+-- map("i", "{", "{}<ESC>i", opt)
 -- 重新加载配置文件
 map("n", "<leader>vr", ":source ~/.config/nvim/init.lua<CR>", opt)
 -- 取消搜索高亮

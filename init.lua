@@ -16,6 +16,8 @@ require("plugin-config.project")
 require("plugin-config.nvim-treesitter")
 require("plugin-config.lsp_signature")
 require("plugin-config.diffview")
+require("plugin-config.autopairs")
+require("plugin-config.markdown-preview")
 
 -- coding 配置
 require("plugin-config.nvim-comment")

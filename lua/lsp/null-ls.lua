@@ -40,10 +40,10 @@ null_ls.setup({
       prefer_local = "node_modules/.bin",
     }),
     -- code actions ---------------------
-    code_actions.gitsigns,
-    -- code_actions.eslint.with({
-    --   prefer_local = "node_modules/.bin",
-    -- }),
+    -- code_actions.gitsigns,
+    code_actions.eslint.with({
+      prefer_local = "node_modules/.bin",
+    }),
   },
   -- #{m}: message
   -- #{s}: source name (defaults to null-ls if not specified)
