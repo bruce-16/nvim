@@ -65,6 +65,8 @@ packer.startup(
     use 'windwp/nvim-autopairs'
     -- markdown
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+    -- close buffers
+    use 'kazhala/close-buffers.nvim'
 end)
 
 -- 每次保存 plugins.lua 自动安装插件

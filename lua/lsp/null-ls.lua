@@ -6,7 +6,7 @@ end
 
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
-local code_actions = null_ls.builtins.code_actions
+-- local code_actions = null_ls.builtins.code_actions
 
 null_ls.setup({
   debug = false,
@@ -36,14 +36,14 @@ null_ls.setup({
       prefer_local = "node_modules/.bin",
     }),
     -- Diagnostics  ---------------------
-    diagnostics.eslint.with({
-      prefer_local = "node_modules/.bin",
-    }),
+    -- diagnostics.eslint.with({
+    --   prefer_local = "node_modules/.bin",
+    -- }),
     -- code actions ---------------------
     -- code_actions.gitsigns,
-    code_actions.eslint.with({
-      prefer_local = "node_modules/.bin",
-    }),
+    -- code_actions.eslint.with({
+    --   prefer_local = "node_modules/.bin",
+    -- }),
   },
   -- #{m}: message
   -- #{s}: source name (defaults to null-ls if not specified)

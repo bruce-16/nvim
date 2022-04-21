@@ -48,18 +48,24 @@
 │   └── packer_compiled.lua
 ```
 # Start
-1. clone 该仓库放在 `~/.config/nvim` 下。
-2. 安装 [packer]( https://github.com/wbthomason/packer.nvim )
+## 依赖安装
+1. 安装 [packer]( https://github.com/wbthomason/packer.nvim )
+2. 安装 [Nerd Font]( https://www.nerdfonts.com/ )
+3. 安装 [sharkdp/fd (finder)](https://github.com/sharkdp/fd)
+4. 安装 [fzf](https://github.com/junegunn/fzf)
+5. 安装 [Ag](https://github.com/ggreer/the_silver_searcher#installing)
+## 拉取代码
+clone 该仓库放在 `~/.config/nvim` 下。
 ```bash
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
-3. 使用 packer 安装其他 plugins
+## nvim 里面用 packer 安装依赖
+使用 packer 安装其他 plugins
 ```vim
 :PackerSync
 ```
-4. 安装 [Nerd Font]( https://www.nerdfonts.com/ )
-4. 重新启动 nvim
+重新启动 nvim
 
 # tmux & alacritty
 先按照官网下载两个软件
