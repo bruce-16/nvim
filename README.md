@@ -74,36 +74,18 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 1. 使用 on-my-tmux 作为初始配置，搜索安即可
 2. 在 ` ~/.tmux.conf.local ` 中追加用于 vim & tmux 分屏之间的跳转的配置
 ```tmux
-# Smart pane switching with awareness of Vim splits.
-# See: https://github.com/christoomey/vim-tmux-navigator
-is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
-    | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+# https://github.com/aserowy/tmux.nvim
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
 
-bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h'  'select-pane -L'
-bind-key -n 'C-j' if-shell "$is_vim" 'send-keys C-j'  'select-pane -D'
-bind-key -n 'C-k' if-shell "$is_vim" 'send-keys C-k'  'select-pane -U'
-bind-key -n 'C-l' if-shell "$is_vim" 'send-keys C-l'  'select-pane -R'
+bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h' { if -F '#{pane_at_left}' '' 'select-pane -L' }
+bind-key -n 'C-j' if-shell "$is_vim" 'send-keys C-j' { if -F '#{pane_at_bottom}' '' 'select-pane -D' }
+bind-key -n 'C-k' if-shell "$is_vim" 'send-keys C-k' { if -F '#{pane_at_top}' '' 'select-pane -U' }
+bind-key -n 'C-l' if-shell "$is_vim" 'send-keys C-l' { if -F '#{pane_at_right}' '' 'select-pane -R' }
 
-tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
-
-bind-key -n 'C-\' if-shell "$is_vim" 'send-keys C-\' 'select-pane -l'
-
-bind-key -T copy-mode-vi 'C-h' select-pane -L
-bind-key -T copy-mode-vi 'C-j' select-pane -D
-bind-key -T copy-mode-vi 'C-k' select-pane -U
-bind-key -T copy-mode-vi 'C-l' select-pane -R
-bind-key -T copy-mode-vi 'C-\' select-pane -l
-
-
-forward_programs="view|n?vim?|fzf|lazygit|ssh"
-
-should_forward="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?($forward_programs)(diff)?$'"
-
-bind-key -n 'C-h' if-shell "$should_forward" "send-keys C-h" "select-pane -L"
-bind-key -n 'C-j' if-shell "$should_forward" "send-keys C-j" "select-pane -D"
-bind-key -n 'C-k' if-shell "$should_forward" "send-keys C-k" "select-pane -U"
-bind-key -n 'C-l' if-shell "$should_forward" "send-keys C-l" "select-pane -R"
-bind-key -n 'C-\' if-shell "$should_forward" "send-keys C-\\" "select-pane -l"
+bind-key -T copy-mode-vi 'C-h' if -F '#{pane_at_left}' '' 'select-pane -L'
+bind-key -T copy-mode-vi 'C-j' if -F '#{pane_at_bottom}' '' 'select-pane -D'
+bind-key -T copy-mode-vi 'C-k' if -F '#{pane_at_top}' '' 'select-pane -U'
+bind-key -T copy-mode-vi 'C-l' if -F '#{pane_at_right}' '' 'select-pane -R'
 ```
 ## alacritty 配置
 暂时使用官网默认，下载配置文件，根据需要去掉些许配置, 基本配置，不太重要

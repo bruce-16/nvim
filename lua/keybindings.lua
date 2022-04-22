@@ -356,4 +356,9 @@ map("n", "<leader><leader>k", ":HopLineBC<CR>", opt)
 map("n", "<leader><leader>/", ":HopPattern", opt)
 map("n", "<leader><leader>w", ":HopWordCurrentLine<CR>", opt)
 
+map("v", "<leader><leader>f", ":HopWord<CR>", opt)
+map("v", "<leader><leader>j", ":HopLineAC<CR>", opt)
+map("v", "<leader><leader>k", ":HopLineBC<CR>", opt)
+map("v", "<leader><leader>/", ":HopPattern", opt)
+map("v", "<leader><leader>w", ":HopWordCurrentLine<CR>", opt)
 return pluginKeys
