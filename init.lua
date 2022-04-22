@@ -18,6 +18,10 @@ require("plugin-config.lsp_signature")
 require("plugin-config.diffview")
 require("plugin-config.autopairs")
 require("plugin-config.markdown-preview")
+require("plugin-config.marks")
+require("plugin-config.cursorline")
+require("plugin-config.hop")
+require("plugin-config.tmux")
 
 -- coding 配置
 require("plugin-config.nvim-comment")

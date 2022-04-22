@@ -5,9 +5,9 @@ packer.startup(
     use 'wbthomason/packer.nvim'
     -- 主题
     use 'folke/tokyonight.nvim'
-    use 'ful1e5/onedark.nvim'
+    use 'navarasu/onedark.nvim'
     use({ "ellisonleao/gruvbox.nvim", requires = { "rktjmp/lush.nvim" } })
-    use 'arcticicestudio/nord-vim'
+    use 'shaunsingh/nord.nvim'
     -- tree
     use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
     -- bufferline
@@ -26,9 +26,14 @@ packer.startup(
     use("ahmedkhalf/project.nvim")
     -- treesitter （新增）
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-    -- coding 工具类
+    -- 自动增加引号等
     use 'tpope/vim-surround'
-    use 'easymotion/vim-easymotion'
+    -- motion
+    use {
+      'phaazon/hop.nvim',
+      branch = 'v1', -- optional but strongly recommended
+    }
+    -- comment
     use "terrortylor/nvim-comment"
     -- lspconfig
     use({ "neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer" })
@@ -60,13 +65,17 @@ packer.startup(
     -- replace
     use 'brooth/far.vim'
     -- tmux + vim navigator
-    use 'christoomey/vim-tmux-navigator'
+    use "aserowy/tmux.nvim"
     -- autopairs
     use 'windwp/nvim-autopairs'
     -- markdown
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
     -- close buffers
     use 'kazhala/close-buffers.nvim'
+    -- marks
+    use 'chentau/marks.nvim'
+    -- cursorline
+    use 'yamatsum/nvim-cursorline'
 end)
 
 -- 每次保存 plugins.lua 自动安装插件

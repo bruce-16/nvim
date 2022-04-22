@@ -161,6 +161,7 @@ pluginKeys.mapLSP = function(mapbuf)
   -- code action
   -- mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
   mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
+  mapbuf("n", "<leader>fm", "<cmd>Telescope marks<CR>", opt)
   -- go xx
   mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
   -- mapbuf("n", "gd", "<cmd>Lspsaga preview_definition<CR>", opt)
@@ -173,8 +174,8 @@ pluginKeys.mapLSP = function(mapbuf)
   mapbuf("n", "gr", "<cmd>Telescope lsp_references<CR>", opt)
   -- diagnostic
   mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
-  mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
-  mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
+  mapbuf("n", "<leader>gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
+  mapbuf("n", "<leader>gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
   mapbuf("n", "<leader>=", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
   -- mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
   -- mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
@@ -256,11 +257,6 @@ pluginKeys.cmp = function(cmp)
     end, {"i", "s"})
   }
 end
-
---========
---======== lazygit
---========
--- map("n", "<leader>gg", "<cmd>LazyGit<CR>", opt)
 
 --========
 --======== gitsigns
@@ -350,5 +346,14 @@ pluginKeys.diffViewKeys = function(cb)
     },
   }
 end
+
+-- ====
+-- ==== hop
+-- ====
+map("n", "<leader><leader>f", ":HopWord<CR>", opt)
+map("n", "<leader><leader>j", ":HopLineAC<CR>", opt)
+map("n", "<leader><leader>k", ":HopLineBC<CR>", opt)
+map("n", "<leader><leader>/", ":HopPattern", opt)
+map("n", "<leader><leader>w", ":HopWordCurrentLine<CR>", opt)
 
 return pluginKeys

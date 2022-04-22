@@ -161,10 +161,15 @@ _G.packer_plugins = {
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim",
     url = "https://github.com/iamcco/markdown-preview.nvim"
   },
-  ["nord-vim"] = {
+  ["marks.nvim"] = {
     loaded = true,
-    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/nord-vim",
-    url = "https://github.com/arcticicestudio/nord-vim"
+    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/marks.nvim",
+    url = "https://github.com/chentau/marks.nvim"
+  },
+  ["nord.nvim"] = {
+    loaded = true,
+    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/nord.nvim",
+    url = "https://github.com/shaunsingh/nord.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -185,6 +190,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/nvim-comment",
     url = "https://github.com/terrortylor/nvim-comment"
+  },
+  ["nvim-cursorline"] = {
+    loaded = true,
+    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/nvim-cursorline",
+    url = "https://github.com/yamatsum/nvim-cursorline"
   },
   ["nvim-lsp-installer"] = {
     loaded = true,
@@ -219,7 +229,7 @@ _G.packer_plugins = {
   ["onedark.nvim"] = {
     loaded = true,
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/onedark.nvim",
-    url = "https://github.com/ful1e5/onedark.nvim"
+    url = "https://github.com/navarasu/onedark.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
