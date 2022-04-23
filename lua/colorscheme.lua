@@ -1,6 +1,8 @@
 vim.g.tokyonight_transparent = true
 vim.g.tokyonight_transparent_sidebar = true
-local colorscheme = "onedark"
+local colorscheme = "tokyonight"
+-- vim.g.tokyonight_style = "day"
+-- vim.o.background = "light"
 
 -- onedark
 -- tokyonight
@@ -13,9 +15,9 @@ if not status_ok then
   return
 end
 
-require('onedark').setup {
-    style = 'darker'
-}
+-- require('onedark').setup {
+--   style = 'darker'
+-- }
 
 -- Change the "hint" color to the "orange" color, and make the "error" color bright red
 -- vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }

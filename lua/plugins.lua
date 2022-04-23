@@ -65,7 +65,7 @@ packer.startup(
     -- replace
     use 'brooth/far.vim'
     -- tmux + vim navigator
-    use "aserowy/tmux.nvim"
+    use 'christoomey/vim-tmux-navigator'
     -- autopairs
     use 'windwp/nvim-autopairs'
     -- markdown
