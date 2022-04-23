@@ -54,3 +54,5 @@ cmp.setup.cmdline(":", {
     { name = "cmdline" },
   }),
 })
+-- 设置自自定义代码段文件目录
+vim.g.vsnip_snippet_dir = '~/.config/nvim/snippets'

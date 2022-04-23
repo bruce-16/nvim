@@ -7,11 +7,10 @@ packer.startup(
     use 'folke/tokyonight.nvim'
     use 'navarasu/onedark.nvim'
     use({ "ellisonleao/gruvbox.nvim", requires = { "rktjmp/lush.nvim" } })
-    use 'shaunsingh/nord.nvim'
     -- tree
     use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
     -- bufferline
-    -- use({ "akinsho/bufferline.nvim", requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" }})
+    use({ "akinsho/bufferline.nvim", requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" }})
     -- lualine
     use("arkav/lualine-lsp-progress")
     use({'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }})
@@ -76,6 +75,8 @@ packer.startup(
     use 'chentau/marks.nvim'
     -- cursorline
     use 'yamatsum/nvim-cursorline'
+    -- scroll
+    use 'psliwka/vim-smoothie'
 end)
 
 -- 每次保存 plugins.lua 自动安装插件

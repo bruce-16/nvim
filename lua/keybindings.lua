@@ -205,9 +205,9 @@ pluginKeys.cmp = function(cmp)
 
   return {
     -- 出现补全
-    ["<C-.>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
+    ["<leader>."] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
     -- 取消
-    ["<C-,>"] = cmp.mapping({
+    ["<leader>,"] = cmp.mapping({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close()
     }),
@@ -221,13 +221,13 @@ pluginKeys.cmp = function(cmp)
     -- 如果窗口内容太多，可以滚动
     ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}),
     ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}),
+
     -- 自定义代码段跳转到下一个参数
     ["<C-l>"] = cmp.mapping(function(_)
       if vim.fn["vsnip#available"](1) == 1 then
         feedkey("<Plug>(vsnip-expand-or-jump)", "")
       end
     end, {"i", "s"}),
-
     -- 自定义代码段跳转到上一个参数
     ["<C-h>"] = cmp.mapping(function()
       if vim.fn["vsnip#jumpable"](-1) == 1 then
