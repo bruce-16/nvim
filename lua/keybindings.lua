@@ -99,8 +99,8 @@ pluginKeys.nvimTreeList = {
 -- ============ -- bufferline
 -- ============
 -- 左右Tab切换
-map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
-map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
+map("n", "<leader>h", ":BufferLineCyclePrev<CR>", opt)
+map("n", "<leader>l", ":BufferLineCycleNext<CR>", opt)
 -- 关闭
 --"moll/vim-bbye"
 map("n", "<leader>q", ":Bdelete!<CR>", opt)
