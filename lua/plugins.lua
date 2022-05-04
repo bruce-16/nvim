@@ -33,7 +33,7 @@ packer.startup(
       branch = 'v1', -- optional but strongly recommended
     }
     -- comment
-    use "terrortylor/nvim-comment"
+    use { "numToStr/Comment.nvim", config = function() require('Comment').setup() end }
     -- lspconfig
     use({ "neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer" })
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim" })
@@ -66,7 +66,7 @@ packer.startup(
     -- tmux + vim navigator
     use 'christoomey/vim-tmux-navigator'
     -- autopairs
-    use 'windwp/nvim-autopairs'
+    -- use 'jiangmiao/auto-pairs'
     -- markdown
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
     -- close buffers

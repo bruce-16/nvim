@@ -9,17 +9,16 @@ end
 local list_keys = require('keybindings').nvimTreeList
 nvim_tree.setup({
   auto_reload_on_write = true,
-  -- 显示 git 状态图标
+  -- 跳转文件时不要自动切换目录
   git = {
     enable = true,
     ignore = true,
     timeout = 400,
   },
-  -- project plugin 需要这样设置
-  update_cwd = true,
+  update_cwd = false,
   update_focused_file = {
     enable = true,
-    update_cwd = true,
+    update_cwd = false,
   },
   -- 隐藏 .文件 和 node_modules 文件夹
   filters = {
@@ -46,7 +45,6 @@ nvim_tree.setup({
     signcolumn = 'yes',
   },
   actions = {
-    use_sys_clipboard = true,
     open_file = {
       -- 首次打开大小适配
       resize_window = true,

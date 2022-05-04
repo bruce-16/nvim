@@ -43,6 +43,8 @@ map("n", "<C-d>", "10j", opt)
 map("n", "<leader>q", ":q<CR>", opt)
 map("n", "<leader>qq", ":q!<CR>", opt)
 map("n", "<leader>Q", ":qa!<CR>", opt)
+-- 保存
+map("n", "<leader>s", ":w<CR>", opt)
 --
 -- insert 模式下，跳到行首行尾
 map("i", "<C-h>", "<ESC>I", opt)
@@ -102,25 +104,11 @@ pluginKeys.nvimTreeList = {
 map("n", "<leader>h", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<leader>l", ":BufferLineCycleNext<CR>", opt)
 -- 关闭
---"moll/vim-bbye"
 map("n", "<leader>q", ":Bdelete!<CR>", opt)
-map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
-map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
-map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
+-- map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
+-- map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
+-- map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
 
---=============
---============= nvim-comment
---=============
-pluginKeys.nvimCommentList = {
-  -- Normal mode mapping left hand side
-  line_mapping = "gcc",
-  -- Visual/Operator mapping left hand side
-  operator_mapping = "gc",
-  -- text object mapping, comment chunk,,
-  comment_chunk_text_object = "ic",
-}
-
---
 --===========
 --=========== telescope
 --===========
@@ -159,8 +147,8 @@ pluginKeys.mapLSP = function(mapbuf)
   -- mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
   mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
   -- code action
-  -- mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
-  mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
+  mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
+  -- mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
   mapbuf("n", "<leader>fm", "<cmd>Telescope marks<CR>", opt)
   -- go xx
   mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
@@ -350,11 +338,12 @@ end
 -- ====
 -- ==== hop
 -- ====
-map("n", "<leader><leader>f", ":HopWord<CR>", opt)
+map("n", "<leader><leader>w", ":HopWord<CR>", opt)
 map("n", "<leader><leader>b", ":HopWordBC<CR>", opt)
 map("n", "<leader><leader>j", ":HopLineAC<CR>", opt)
 map("n", "<leader><leader>k", ":HopLineBC<CR>", opt)
 map("n", "<leader><leader>/", ":HopPattern", opt)
-map("n", "<leader><leader>w", ":HopWordCurrentLine<CR>", opt)
+map("n", "<leader><leader>l", ":HopWordCurrentLineAC<CR>", opt)
+map("n", "<leader><leader>h", ":HopWordCurrentLineBC<CR>", opt)
 
 return pluginKeys
