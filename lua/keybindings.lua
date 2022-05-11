@@ -1,4 +1,4 @@
--- map('模式', '按键', '映射为', 'options')
+-- map('模式', '按键', '映射lsp_finder为', 'options')
 local map = vim.api.nvim_set_keymap
 -- 复用 opt 参数
 local opt = { noremap = true, silent = true }
@@ -137,6 +137,9 @@ pluginKeys.telescopeList = {
     ["<C-u>"] = "preview_scrolling_up",
     ["<C-d>"] = "preview_scrolling_down",
   },
+  n = {
+    ["<C-o>"] = 'delete_buffer',
+  }
 }
 
 --===========
@@ -147,19 +150,21 @@ pluginKeys.mapLSP = function(mapbuf)
   -- mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
   mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
   -- code action
-  mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
-  -- mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
+  -- mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
+  mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
   mapbuf("n", "<leader>fm", "<cmd>Telescope marks<CR>", opt)
   -- go xx
   mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
   -- mapbuf("n", "gd", "<cmd>Lspsaga preview_definition<CR>", opt)
-  mapbuf("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opt)
+  mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
   -- mapbuf("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opt)
 
   -- mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
-  mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
+  -- mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
+  mapbuf("n", "gD", "<cmd>Lspsaga preview_definition<CR>", opt)
   mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
-  mapbuf("n", "gr", "<cmd>Telescope lsp_references<CR>", opt)
+  -- mapbuf("n", "gr", "<cmd>Telescope lsp_references<CR>", opt)
+  mapbuf("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opt)
   -- diagnostic
   mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
   mapbuf("n", "<leader>gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)

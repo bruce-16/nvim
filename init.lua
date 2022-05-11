@@ -21,6 +21,7 @@ require("plugin-config.markdown-preview")
 require("plugin-config.marks")
 require("plugin-config.cursorline")
 require("plugin-config.hop")
+require("plugin-config.lspsaga")
 
 -- coding 配置
 require("plugin-config.nvim-comment")
@@ -32,4 +33,4 @@ require("lsp.setup")
 require("lsp.cmp")
 require("lsp.ui")
 require("lsp.null-ls")
---
+
