@@ -67,11 +67,11 @@ packer.startup(
     -- tmux + vim navigator
     use 'christoomey/vim-tmux-navigator'
     -- autopairs
-    use 'jiangmiao/auto-pairs'
+    use 'windwp/nvim-autopairs'
     -- markdown
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
     -- marks
-    use 'chentau/marks.nvim'
+    use 'chentoast/marks.nvim'
     -- cursorline
     use 'yamatsum/nvim-cursorline'
     -- scroll

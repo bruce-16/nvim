@@ -10,15 +10,16 @@ local list_keys = require('keybindings').nvimTreeList
 nvim_tree.setup({
   auto_reload_on_write = true,
   -- 跳转文件时不要自动切换目录
+  update_cwd = false,
   git = {
     enable = true,
     ignore = true,
     timeout = 400,
   },
-  update_cwd = false,
   update_focused_file = {
-    enable = true,
+    enable = false,
     update_cwd = false,
+    ignore_list = {},
   },
   -- 隐藏 .文件 和 node_modules 文件夹
   filters = {
