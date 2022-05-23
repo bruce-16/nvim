@@ -14,30 +14,30 @@ telescope.setup({
     wrap_results = 1,
   },
   pickers = {
-    find_files = {
-      theme = "ivy",
-    },
-    git_files = {
-      theme = "ivy",
-    },
-    git_status = {
-      theme = "ivy",
-    },
-    buffers = {
-      theme = "ivy",
-    },
-    marks = {
-      theme = "ivy",
-    },
-    live_grep = {
-      theme = "ivy",
-    },
-    grep_string = {
-      theme = "ivy",
-    },
-    lsp_references = {
-      theme = "ivy",
-    },
+    -- find_files = {
+    --   theme = "ivy",
+    -- },
+    -- git_files = {
+    --   theme = "ivy",
+    -- },
+    -- git_status = {
+    --   theme = "ivy",
+    -- },
+    -- buffers = {
+    --   theme = "ivy",
+    -- },
+    -- marks = {
+    --   theme = "ivy",
+    -- },
+    -- live_grep = {
+    --   theme = "ivy",
+    -- },
+    -- grep_string = {
+    --   theme = "ivy",
+    -- },
+    -- lsp_references = {
+    --   theme = "ivy",
+    -- },
   },
   extensions = {
     fzf = {

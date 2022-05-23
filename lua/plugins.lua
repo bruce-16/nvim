@@ -56,9 +56,6 @@ packer.startup(
     use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
     -- git
     use 'lewis6991/gitsigns.nvim'
-    -- git diff
-    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
-    -- 补全 ui 插件
     -- 图标集
     use 'onsails/lspkind-nvim'
     use 'tami5/lspsaga.nvim'
@@ -76,6 +73,9 @@ packer.startup(
     use 'yamatsum/nvim-cursorline'
     -- scroll
     use 'psliwka/vim-smoothie'
+    -- which-key
+    use "folke/which-key.nvim"
+
 end)
 
 -- 每次保存 plugins.lua 自动安装插件
