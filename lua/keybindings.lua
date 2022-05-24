@@ -33,9 +33,6 @@ map("v", "<", "<gv", opt)
 map("v", ">", ">gv", opt)
 --
 -- 上下滚动浏览
--- map("n", "<C-j>", "4j", opt)
--- map("n", "<C-k>", "4k", opt)
--- ctrl u / ctrl + d  只移动9行，默认移动半屏
 map("n", "<C-u>", "10k", opt)
 map("n", "<C-d>", "10j", opt)
 
@@ -45,20 +42,15 @@ map("n", "<leader>qq", ":q!<CR>", opt)
 map("n", "<leader>Q", ":qa!<CR>", opt)
 -- 保存
 map("n", "<leader>s", ":w<CR>", opt)
---
+-- mention
+map("n", "H", "^", opt);
+map("n", "L", "$", opt);
+
 -- insert 模式下，跳到行首行尾
 map("i", "<C-h>", "<ESC>I", opt)
 map("i", "<C-l>", "<ESC>A", opt)
 -- insert 模式下，jk 表示 esj
 map("i", "jk", "<ESC>", opt)
--- 自动补齐括号
--- 已经用插件代替
--- map("i", "'", "''<ESC>i", opt)
--- map("i", "\"", "\"\"<ESC>i", opt)
--- map("i", "<", "<><ESC>i", opt)
--- map("i", "(", "()<ESC>i", opt)
--- map("i", "[", "[]<ESC>i", opt)
--- map("i", "{", "{}<ESC>i", opt)
 -- 重新加载配置文件
 map("n", "<leader>vr", ":source ~/.config/nvim/init.lua<CR>", opt)
 -- 取消搜索高亮
@@ -109,25 +101,11 @@ map("n", "<leader>q", ":Bdelete!<CR>", opt)
 -- map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
 -- map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
 
---===========
---=========== telescope
---===========
--- Telescope
--- 查找文件
-map("n", "<C-p>", ":Telescope git_files<CR>", opt)
-map("n", "<leader>fb", ":Telescope buffers<CR>", opt)
-map("n", "<leader>fm", ":Telescope marks<CR>", opt)
-map("n", "<leader>fs", ":Telescope git_status<CR>", opt)
--- 全局搜索
-map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
-
 pluginKeys.telescopeList = {
   i = {
     -- 上下移动
     -- ["<C-j>"] = "move_selection_next",
     -- ["<C-k>"] = "move_selection_previous",
-    ["<Down>"] = "move_selection_next",
-    ["<Up>"] = "move_selection_previous",
     -- 历史记录
     -- ["<C-n>"] = "cycle_history_next",
     -- ["<C-p>"] = "cycle_history_prev",
@@ -145,42 +123,11 @@ pluginKeys.telescopeList = {
 --===========
 --=========== lsp 回调函数快捷键设置
 --===========
+-- [[
+-- 大部分迁移到 which-key
+-- ]]
 pluginKeys.mapLSP = function(mapbuf)
-  -- rename
-  mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
-  -- mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
-  -- code action
-  mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
-  -- mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
-  mapbuf("n", "<leader>fm", "<cmd>Telescope marks<CR>", opt)
-  -- go xx
-  mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
-  -- mapbuf("n", "gd", "<cmd>Lspsaga preview_definition<CR>", opt)
-  mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
-  -- mapbuf("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opt)
-
-  -- mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
-  mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
-  -- mapbuf("n", "gD", "<cmd>Lspsaga preview_definition<CR>", opt)
-  mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
-  mapbuf("n", "gr", "<cmd>Telescope lsp_references<CR>", opt)
-  -- mapbuf("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opt)
-  -- diagnostic
-  mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
-  mapbuf("n", "<leader>gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
-  mapbuf("n", "<leader>gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
   mapbuf("n", "<leader>=", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
-  -- mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
-  -- mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
-  -- mapbuf("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
-  -- mapbuf("n", "<leader>=", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
-  -- 没用到
-  -- mapbuf('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt)
-  -- mapbuf("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
-  -- mapbuf('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opt)
-  -- mapbuf('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opt)
-  -- mapbuf('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opt)
-  -- mapbuf('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opt)
 end
 
 --===========
@@ -198,9 +145,9 @@ pluginKeys.cmp = function(cmp)
 
   return {
     -- 出现补全
-    ["<leader>."] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
+    ["<C->"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
     -- 取消
-    ["<leader>,"] = cmp.mapping({
+    ["<C-,>"] = cmp.mapping({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close()
     }),
@@ -254,17 +201,11 @@ end
 --========
 --======== gitsigns
 --========
+-- [[
+-- 迁移到 which-key
+-- ]]
 pluginKeys.mapGitSigns = function(mapbuf)
-  -- Navigation
-  mapbuf('n', ']g', ':Gitsigns next_hunk<CR>', opt)
-  mapbuf('n', '[g', ':Gitsigns prev_hunk<CR>', opt)
-  -- Actions
-  mapbuf('n', '<leader>sr', ':Gitsigns reset_hunk<CR>', opt)
-  mapbuf('v', '<leader>sr', ':Gitsigns reset_hunk<CR>', opt)
-  mapbuf('n', '<leader>sR', ':Gitsigns reset_buffer<CR>', opt)
-  mapbuf('n', '<leader>sp', ':Gitsigns preview_hunk<CR>', opt)
-  mapbuf('n', '<leader>sb', ':Gitsigns toggle_current_line_blame<CR>', opt)
-  mapbuf('n', '<leader>sd', ':Gitsigns diffthis<CR>', opt)
+--
 end
 
 -- ======
@@ -283,11 +224,111 @@ map("n", "<leader><leader>/", ":HopPattern", opt)
 map("n", "<leader><leader>l", ":HopWordCurrentLineAC<CR>", opt)
 map("n", "<leader><leader>h", ":HopWordCurrentLineBC<CR>", opt)
 
-pluginKeys.whichKeyMap = {
-  f = {
-    name = "file", -- optional group name
-    f = { "<cmd>Telescope find_files<cr>", "Find File" }, -- create a binding with label
+pluginKeys.whichKeyMapForNormal = {
+  ["c"] = { "<cmd>BufferKill<CR>", "Close Buffer" },
+  ["f"] = { require("plugin-config.telescope.custom-finder").find_project_files, "Find File" },
+  ["gh"] = { vim.lsp.buf.hover, "Show hover" },
+  ["gd"] = { vim.lsp.buf.definition, "Goto Definition" },
+  ["gD"] = { vim.lsp.buf.declaration, "Goto declaration" },
+  ["gr"] = { vim.lsp.buf.references, "Goto references" },
+  ["gI"] = { vim.lsp.buf.implementation, "Goto Implementation" },
+  ["gs"] = { vim.lsp.buf.signature_help, "show signature help" },
+  ["gp"] = { vim.diagnostic.open_float, "Peek definition" },
+  ["gl"] = {
+    function()
+      local config = {
+        focusable = false,
+        style = "minimal",
+        border = "rounded",
+        source = "always",
+        header = "",
+        prefix = "",
+        format = function(d)
+          local t = vim.deepcopy(d)
+          local code = d.code or (d.user_data and d.user_data.lsp.code)
+          if code then
+            t.message = string.format("%s [%s]", t.message, code):gsub("1. ", "")
+          end
+          return t.message
+        end,
+      }
+      config.scope = "line"
+      vim.diagnostic.open_float(0, config)
+    end,
+    "Show line diagnostics",
   },
+  g = {
+    name = "git",
+    j = { "<cmd>Gitsigns next_hunk<CR>", "Next Hunk"},
+    k = { "<cmd>Gitsigns prev_hunk<CR>", "Pervious Hunk"},
+    s = { "<cmd>Gitsigns reset_hunk<CR>", "Reset Hunk"},
+    R = { "<cmd>Gitsigns reset_buffer<CR>", "Reset Buffer" },
+    p = { "<cmd>Gitsigns preview_hunk<CR>", "Preview Hunk"},
+    b = { "<cmd>Gitsigns toggle_current_line_blame<CR>", "Toggle Current Line Blame"},
+    d = { "<cmd>Gitsigns diffthis HEAD<CR>", "Git Diff"},
+    f = { "<cmd>Telescope git_status<CR>" , "Open Changed File" },
+    o = { "<cmd>Telescope git_branches<CR>", "Checkout Branch" },
+    c = { "<cmd>Telescope git_bcommits<CR>", "Checkout Commit(for current file)" },
+  },
+  b = {
+    name = "Buffers",
+    j = { "<cmd>BufferLinePick<CR>", "Jump" },
+    f = { "<cmd>Telescope buffers<CR>", "Find" },
+    e = {
+      "<cmd>BufferLinePickClose<CR>",
+      "Pick which buffer to close",
+    },
+    h = { "<cmd>BufferLineCloseLeft<CR>", "Close all to the left" },
+    l = { "<cmd>BufferLineCloseRight<CR>", "Close all to the right" },
+    D = {
+      "<cmd>BufferLineSortByDirectory<CR>",
+      "Sort by directory",
+    },
+    L = {
+      "<cmd>BufferLineSortByExtension<CR>",
+      "Sort by language",
+    },
+  },
+  l = {
+    name = "lsp",
+    a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
+    d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<CR>", "Buffer Diagnostics" },
+    w = { "<cmd>Telescope diagnostics<CR>", "Diagnostics" },
+    i = { "<cmd>LspInfo<CR>", "Info" },
+    I = { "<cmd>LspInstallInfo<CR>", "Installer Info" },
+    j = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic" },
+    k = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Prev Diagnostic" },
+    l = { "<cmd>lua vim.lsp.codelens.run()<CR>", "CodeLens Action" },
+    r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
+  },
+  s = {
+    name = "Search",
+    b = { "<cmd>Telescope git_branches<CR>", "Checkout branch" },
+    c = { "<cmd>Telescope colorscheme<CR>", "Colorscheme" },
+    f = { "<cmd>Telescope find_files<CR>", "Find File" },
+    h = { "<cmd>Telescope help_tags<CR>", "Find Help" },
+    M = { "<cmd>Telescope man_pages<CR>", "Man Pages" },
+    r = { "<cmd>Telescope oldfiles<CR>", "Open Recent File" },
+    R = { "<cmd>Telescope registers<CR>", "Registers" },
+    t = { "<cmd>Telescope live_grep<CR>", "Text" },
+    k = { "<cmd>Telescope keymaps<CR>", "Keymaps" },
+    C = { "<cmd>Telescope commands<CR>", "Commands" },
+    p = {
+      "<cmd>lua require('telescope.builtin.internal').colorscheme({enable_preview = true})<CR>",
+      "Colorscheme with Preview",
+    },
+  },
+  T = {
+    name = "Treesitter",
+    i = { ":TSConfigInfo<cr>", "Info" },
+  },
+}
+
+pluginKeys.whichKeyMapForVisual = {
+  g = {
+    name = "git",
+    s = { "<cmd>Gitsigns reset_hunk<CR>", "Reset Chunk"},
+  }
 }
 
 return pluginKeys
