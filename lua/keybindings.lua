@@ -92,14 +92,8 @@ pluginKeys.nvimTreeList = {
 -- ============
 -- ============ -- bufferline
 -- ============
--- 左右Tab切换
-map("n", "<leader>h", ":BufferLineCyclePrev<CR>", opt)
-map("n", "<leader>l", ":BufferLineCycleNext<CR>", opt)
 -- 关闭
 map("n", "<leader>q", ":Bdelete!<CR>", opt)
--- map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
--- map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
--- map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
 
 pluginKeys.telescopeList = {
   i = {
@@ -227,6 +221,7 @@ map("n", "<leader><leader>h", ":HopWordCurrentLineBC<CR>", opt)
 pluginKeys.whichKeyMapForNormal = {
   ["c"] = { "<cmd>BufferKill<CR>", "Close Buffer" },
   ["f"] = { require("plugin-config.telescope.custom-finder").find_project_files, "Find File" },
+  -- lsp 基本操作
   ["gh"] = { vim.lsp.buf.hover, "Show hover" },
   ["gd"] = { vim.lsp.buf.definition, "Goto Definition" },
   ["gD"] = { vim.lsp.buf.declaration, "Goto declaration" },
@@ -257,6 +252,7 @@ pluginKeys.whichKeyMapForNormal = {
     end,
     "Show line diagnostics",
   },
+  -- git 相关
   g = {
     name = "git",
     j = { "<cmd>Gitsigns next_hunk<CR>", "Next Hunk"},
@@ -278,13 +274,17 @@ pluginKeys.whichKeyMapForNormal = {
       "<cmd>BufferLinePickClose<CR>",
       "Pick which buffer to close",
     },
-    h = { "<cmd>BufferLineCloseLeft<CR>", "Close all to the left" },
-    l = { "<cmd>BufferLineCloseRight<CR>", "Close all to the right" },
+
+  -- 左右Tab切换
+    h = { "<cmd>BufferLineCyclePrev<CR>", "BufferLine Previous"},
+    l = { "<cmd>BufferLineCycleNext<CR>", "BufferLine Next"},
+    H = { "<cmd>BufferLineCloseLeft<CR>", "Close all to the left" },
+    L = { "<cmd>BufferLineCloseRight<CR>", "Close all to the right" },
     D = {
       "<cmd>BufferLineSortByDirectory<CR>",
       "Sort by directory",
     },
-    L = {
+    S = {
       "<cmd>BufferLineSortByExtension<CR>",
       "Sort by language",
     },
