@@ -143,7 +143,7 @@ _G.packer_plugins = {
   ["lspsaga.nvim"] = {
     loaded = true,
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
-    url = "https://github.com/tami5/lspsaga.nvim"
+    url = "https://github.com/glepnir/lspsaga.nvim"
   },
   ["lualine-lsp-progress"] = {
     loaded = true,
@@ -166,11 +166,6 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim",
     url = "https://github.com/iamcco/markdown-preview.nvim"
-  },
-  ["marks.nvim"] = {
-    loaded = true,
-    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/marks.nvim",
-    url = "https://github.com/chentoast/marks.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -252,10 +247,20 @@ _G.packer_plugins = {
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
     url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
   },
+  ["telescope-ui-select.nvim"] = {
+    loaded = true,
+    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/telescope-ui-select.nvim",
+    url = "https://github.com/nvim-telescope/telescope-ui-select.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["toggleterm.nvim"] = {
+    loaded = true,
+    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
+    url = "https://github.com/akinsho/toggleterm.nvim"
   },
   ["tokyonight.nvim"] = {
     loaded = true,

@@ -1,6 +1,6 @@
 vim.g.tokyonight_transparent = true
 vim.g.tokyonight_transparent_sidebar = true
-local colorscheme = "tokyonight"
+local colorscheme = "onedark"
 -- vim.g.tokyonight_style = "day"
 -- vim.o.background = "light"
 

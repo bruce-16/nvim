@@ -1,3 +1,7 @@
+-- https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
+-- https://github.com/hrsh7th/nvim-cmp
+-- https://github.com/onsails/lspkind-nvim
+
 local cmp = require("cmp")
 
 cmp.setup({
@@ -18,20 +22,20 @@ cmp.setup({
     end,
   },
   -- 补全源
+ -- 来源
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
+    { name = "nvim_lsp_signature_help" },
     -- For vsnip users.
     { name = "vsnip" },
-
+    { name = "buffer" },
     -- For luasnip users.
     -- { name = 'luasnip' },
-
     --For ultisnips users.
     -- { name = 'ultisnips' },
-
     -- -- For snippy users.
     -- { name = 'snippy' },
-  }, { { name = "buffer" }, { name = "path" } }),
+  }, { { name = "path" } }),
 
   -- 快捷键设置
   mapping = require("keybindings").cmp(cmp),

@@ -14,6 +14,7 @@ local setupOpt = {
   open_on_setup_file = false,
   sort_by = "name",
   ignore_buffer_on_setup = false,
+  respect_buf_cwd = true,
   ignore_ft_on_setup = {
     "startify",
     "dashboard",
@@ -74,6 +75,11 @@ local setupOpt = {
     signcolumn = 'yes',
   },
   renderer = {
+    add_trailing = false,
+    group_empty = false,
+    highlight_git = false,
+    highlight_opened_files = "none",
+    root_folder_modifier = ":~",
     indent_markers = {
       enable = true,
       icons = {
@@ -84,7 +90,40 @@ local setupOpt = {
     },
     icons = {
       webdev_colors = true,
+      git_placement = "before",
+      padding = " ",
+      symlink_arrow = " ➛ ",
+      show = {
+        file = true,
+        folder = true,
+        folder_arrow = true,
+        git = true,
+      },
+      glyphs = {
+        default = "",
+        symlink = "",
+        folder = {
+          arrow_closed = "",
+          arrow_open = "",
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+          symlink_open = "",
+        },
+        git = {
+          unstaged = "✗",
+          staged = "✓",
+          unmerged = "",
+          renamed = "➜",
+          untracked = "★",
+          deleted = "",
+          ignored = "◌",
+        },
+      },
     },
+    special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
   },
   actions = {
     use_system_clipboard = true,
@@ -135,50 +174,12 @@ table.insert(setupOpt.view.mappings.list, {
 })
 
 table.insert(setupOpt.view.mappings.list, {
-  key = "gtg",
+  key = "gts",
   action = "telescope_live_grep",
   action_cb = telescope_live_grep,
 })
 -- setup options
 nvim_tree.setup(setupOpt)
-
--- global setting
-local globalOpt = {
-  respect_buf_cwd = true,
-  -- on_config_done = nil,
-  -- show_icons = {
-  --   git = true,
-  --   folders = true,
-  --   files = true,
-  --   folder_arrows = true,
-  -- },
-  git_hl = 1,
-  root_folder_modifier = ":t",
-  icons = {
-    default = "",
-    symlink = "",
-    git = {
-      unstaged = "",
-      staged = "S",
-      unmerged = "",
-      renamed = "➜",
-      deleted = "",
-      untracked = "U",
-      ignored = "◌",
-    },
-    folder = {
-      default = "",
-      open = "",
-      empty = "",
-      empty_open = "",
-      symlink = "",
-    },
-  },
-}
-
-for opt, val in pairs(globalOpt) do
-  vim.g["nvim_tree_" .. opt] = val
-end
 
 -- 自动关闭
 vim.cmd([[

@@ -182,3 +182,7 @@ schemes:
 colors: *tokyo-night-storm
 ```
 
+## kitty 终端的一些配置
+由于 alacritty 对中文输入法不太友好，最后使用 kitty，但是只是简单配置
+
+主要是配置了一下主题，不太重要，就不贴配置了

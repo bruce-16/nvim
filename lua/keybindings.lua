@@ -20,13 +20,16 @@ map("n", "sk", ":resize -10<CR>", opt)
 -- 等比例
 map("n", "s=", "<C-w>=", opt)
 -- Terminal相关
-map("n", "<leader>t", ":sp | terminal<CR>", opt)
-map("n", "<leader>vt", ":vsp | terminal<CR>", opt)
+-- map("n", "<leader>tt", ":sp | terminal<CR>", opt)
+-- map("n", "<leader>tv", ":vsp | terminal<CR>", opt)
+-- Esc 回 Normal 模式
 map("t", "<Esc>", "<C-\\><C-n>", opt)
-map("t", "<A-h>", [[ <C-\><C-N><C-w>h ]], opt)
-map("t", "<A-j>", [[ <C-\><C-N><C-w>j ]], opt)
-map("t", "<A-k>", [[ <C-\><C-N><C-w>k ]], opt)
-map("t", "<A-l>", [[ <C-\><C-N><C-w>l ]], opt)
+map("t", "<C-h>", [[ <C-\><C-N><C-w>h ]], opt)
+map("t", "<C-j>", [[ <C-\><C-N><C-w>j ]], opt)
+map("t", "<C-k>", [[ <C-\><C-N><C-w>k ]], opt)
+map("t", "<C-l>", [[ <C-\><C-N><C-w>l ]], opt)
+map("t", "<C-t>", "<cmd>exe v:count1 . \"ToggleTerm\"<CR>", opt)
+--
 
 -- visual模式下缩进代码
 map("v", "<", "<gv", opt)
@@ -41,7 +44,7 @@ map("n", "<leader>q", ":q<CR>", opt)
 map("n", "<leader>qq", ":q!<CR>", opt)
 map("n", "<leader>Q", ":qa!<CR>", opt)
 -- 保存
-map("n", "<leader>s", ":w<CR>", opt)
+-- map("n", "<leader>s", ":w<CR>", opt)
 -- mention
 map("n", "H", "^", opt);
 map("n", "L", "$", opt);
@@ -52,7 +55,7 @@ map("i", "<C-l>", "<ESC>A", opt)
 -- insert 模式下，jk 表示 esj
 map("i", "jk", "<ESC>", opt)
 -- 重新加载配置文件
-map("n", "<leader>vr", ":source ~/.config/nvim/init.lua<CR>", opt)
+-- map("n", "<leader>vr", ":source ~/.config/nvim/init.lua<CR>", opt)
 -- 取消搜索高亮
 map("n", "<c-n>", ":nohls<CR>", opt)
 -- 折叠块
@@ -98,11 +101,11 @@ map("n", "<leader>q", ":Bdelete!<CR>", opt)
 pluginKeys.telescopeList = {
   i = {
     -- 上下移动
-    -- ["<C-j>"] = "move_selection_next",
-    -- ["<C-k>"] = "move_selection_previous",
+    ["<C-n>"] = "move_selection_next",
+    ["<C-p>"] = "move_selection_previous",
     -- 历史记录
-    -- ["<C-n>"] = "cycle_history_next",
-    -- ["<C-p>"] = "cycle_history_prev",
+    ["<C-j>"] = "cycle_history_next",
+    ["<C-k>"] = "cycle_history_prev",
     -- 关闭窗口
     ["<C-c>"] = "close",
     -- 预览窗口上下滚动
@@ -122,6 +125,18 @@ pluginKeys.telescopeList = {
 -- ]]
 pluginKeys.mapLSP = function(mapbuf)
   mapbuf("n", "<leader>=", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
+  mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
+  mapbuf("n", "gD", "<cmd>Lspsaga preview_definition<CR>", opt)
+  -- mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
+  mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
+  mapbuf("n", "gI", "<cmd>Telescope lsp_implementations<CR>", opt)
+  mapbuf("n", "gr", "<cmd>Telescope lsp_references<CR>", opt)
+  -- mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
+  mapbuf("n", "K", "<cmd>Lspsaga hover_doc<CR>", opt)
+  mapbuf("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opt)
+  -- mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
+  mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
+  mapbuf("n", "gs", "<cmd>Lspsaga signature_help<CR>", opt)
 end
 
 --===========
@@ -222,36 +237,10 @@ pluginKeys.whichKeyMapForNormal = {
   ["c"] = { "<cmd>BufferKill<CR>", "Close Buffer" },
   ["f"] = { require("plugin-config.telescope.custom-finder").find_project_files, "Find File" },
   -- lsp 基本操作
-  ["gh"] = { vim.lsp.buf.hover, "Show hover" },
-  ["gd"] = { vim.lsp.buf.definition, "Goto Definition" },
-  ["gD"] = { vim.lsp.buf.declaration, "Goto declaration" },
-  ["gr"] = { vim.lsp.buf.references, "Goto references" },
-  ["gI"] = { vim.lsp.buf.implementation, "Goto Implementation" },
-  ["gs"] = { vim.lsp.buf.signature_help, "show signature help" },
-  ["gp"] = { vim.diagnostic.open_float, "Peek definition" },
-  ["gl"] = {
-    function()
-      local config = {
-        focusable = false,
-        style = "minimal",
-        border = "rounded",
-        source = "always",
-        header = "",
-        prefix = "",
-        format = function(d)
-          local t = vim.deepcopy(d)
-          local code = d.code or (d.user_data and d.user_data.lsp.code)
-          if code then
-            t.message = string.format("%s [%s]", t.message, code):gsub("1. ", "")
-          end
-          return t.message
-        end,
-      }
-      config.scope = "line"
-      vim.diagnostic.open_float(0, config)
-    end,
-    "Show line diagnostics",
-  },
+  -- ["gh"] = { vim.lsp.buf.hover, "Show hover" },
+  -- ["gI"] = { "<cmd>Telescope lsp_implementations<CR>", "Goto Implementation" },
+  -- ["gs"] = { vim.lsp.buf.signature_help, "show signature help" },
+  -- ["gp"] = { vim.diagnostic.open_float, "Peek definition" },
   -- git 相关
   g = {
     name = "git",
@@ -291,26 +280,65 @@ pluginKeys.whichKeyMapForNormal = {
   },
   l = {
     name = "lsp",
-    a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
+    -- a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
+    a = { "<cmd>Lspsaga range_code_action<CR>", "Code Action" },
     d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<CR>", "Buffer Diagnostics" },
     w = { "<cmd>Telescope diagnostics<CR>", "Diagnostics" },
     i = { "<cmd>LspInfo<CR>", "Info" },
+    l = {
+      function()
+        local config = {
+          focusable = false,
+          style = "minimal",
+          border = "rounded",
+          source = "always",
+          header = "",
+          prefix = "",
+          format = function(d)
+            local t = vim.deepcopy(d)
+            local code = d.code or (d.user_data and d.user_data.lsp.code)
+            if code then
+              t.message = string.format("%s [%s]", t.message, code):gsub("1. ", "")
+            end
+            return t.message
+          end,
+        }
+        config.scope = "line"
+        vim.diagnostic.open_float(0, config)
+      end,
+      "Show line diagnostics",
+    },
     I = { "<cmd>LspInstallInfo<CR>", "Installer Info" },
-    j = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic" },
-    k = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Prev Diagnostic" },
-    l = { "<cmd>lua vim.lsp.codelens.run()<CR>", "CodeLens Action" },
+    -- j = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic" },
+    -- k = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Prev Diagnostic" },
+    j = { "<cmd>lspsaga diagnostic_jump_next<CR>", "Next Diagnostic" },
+    k = { "<cmd>lspsaga diagnostic_jump_prev<CR>", "Prev Diagnostic" },
+    J = {
+      function()
+        require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+      end ,
+      "Next Error",
+    },
+    K = {
+      function()
+        require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+      end ,
+      "Prev Error",
+    },
+    A = { "<cmd>lua vim.lsp.codelens.run()<CR>", "CodeLens Action" },
     r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
+    -- r = { "<cmd>Lspsaga rename<CR>", "Rename" },
   },
   s = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<CR>", "Checkout branch" },
     c = { "<cmd>Telescope colorscheme<CR>", "Colorscheme" },
-    f = { "<cmd>Telescope find_files<CR>", "Find File" },
-    h = { "<cmd>Telescope help_tags<CR>", "Find Help" },
+    f = { "<cmd>Telescope find_files<CR>", "File" },
+    h = { "<cmd>Telescope help_tags<CR>", "Help" },
     M = { "<cmd>Telescope man_pages<CR>", "Man Pages" },
     r = { "<cmd>Telescope oldfiles<CR>", "Open Recent File" },
     R = { "<cmd>Telescope registers<CR>", "Registers" },
-    t = { "<cmd>Telescope live_grep<CR>", "Text" },
+    t = { "<cmd>Telescope live_grep<CR>", "String" },
     k = { "<cmd>Telescope keymaps<CR>", "Keymaps" },
     C = { "<cmd>Telescope commands<CR>", "Commands" },
     p = {
@@ -330,5 +358,19 @@ pluginKeys.whichKeyMapForVisual = {
     s = { "<cmd>Gitsigns reset_hunk<CR>", "Reset Chunk"},
   }
 }
+
+-- 自定义 toggleterm 3个不同类型的命令行窗口
+-- <leader>ta 浮动
+-- <leader>tb 右侧
+-- <leader>tc 下方
+-- 特殊lazygit 窗口，需要安装lazygit
+-- <leader>tg lazygit
+pluginKeys.mapToggleTerm = function(toggleterm)
+  vim.keymap.set({ "n", "t" }, "<leader>tf", toggleterm.toggleA)
+  vim.keymap.set({ "n", "t" }, "<leader>tr", toggleterm.toggleB)
+  vim.keymap.set({ "n", "t" }, "<leader>tb", toggleterm.toggleC)
+  vim.keymap.set({ "n", "t" }, "<leader>tg", toggleterm.toggleG)
+  vim.keymap.set({ "n", "t" }, "<leader>ta", "<cmd>ToggleTermToggleAll<CR>", opt)
+end
 
 return pluginKeys

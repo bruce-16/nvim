@@ -1,5 +1,5 @@
 local packer = require("packer")
-packer.startup(
+packer.startup({
   function(use)
     -- Packer 可以管理自己本身
     use 'wbthomason/packer.nvim'
@@ -18,6 +18,7 @@ packer.startup(
     use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim" } }
     -- use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim", { "kdheepak/lazygit.nvim" } } }
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use("nvim-telescope/telescope-ui-select.nvim")
     use { "LinArcX/telescope-env.nvim" }
     -- dashboard-nvim (新增)
     -- use("glepnir/dashboard-nvim")
@@ -36,7 +37,7 @@ packer.startup(
     use { "numToStr/Comment.nvim", config = function() require('Comment').setup() end }
     -- lspconfig
     use({ "williamboman/nvim-lsp-installer" })
-    use({ "neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer" })
+    use({ "neovim/nvim-lspconfig" })
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim" })
     -- 函数参数提示
     use "ray-x/lsp_signature.nvim"
@@ -58,7 +59,7 @@ packer.startup(
     use 'lewis6991/gitsigns.nvim'
     -- 图标集
     use 'onsails/lspkind-nvim'
-    use 'tami5/lspsaga.nvim'
+    use 'glepnir/lspsaga.nvim'
     -- replace
     use 'brooth/far.vim'
     -- tmux + vim navigator
@@ -67,16 +68,40 @@ packer.startup(
     use 'windwp/nvim-autopairs'
     -- markdown
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
-    -- marks
-    use 'chentoast/marks.nvim'
     -- cursorline
     use 'yamatsum/nvim-cursorline'
     -- scroll
     use 'psliwka/vim-smoothie'
     -- which-key
     use "folke/which-key.nvim"
+    -- terminal
+    use({ "akinsho/toggleterm.nvim" })
 
-end)
+end,
+config = {
+    -- 锁定插件版本在snapshots目录
+    -- snapshot_path = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots"),
+    -- 这里锁定插件版本在v1，不会继续更新插件
+    -- snapshot = "v1",
+
+    -- 最大并发数
+    max_jobs = 16,
+    -- 自定义源
+    git = {
+      -- default_url_format = "https://hub.fastgit.xyz/%s",
+      -- default_url_format = "https://mirror.ghproxy.com/https://github.com/%s",
+      -- default_url_format = "https://gitcode.net/mirrors/%s",
+      -- default_url_format = "https://gitclone.com/github.com/%s",
+    },
+    -- display = {
+    -- 使用浮动窗口显示
+    --   open_fn = function()
+    --     return require("packer.util").float({ border = "single" })
+    --   end,
+    -- },
+  },
+})
+
 
 -- 每次保存 plugins.lua 自动安装插件
 pcall(

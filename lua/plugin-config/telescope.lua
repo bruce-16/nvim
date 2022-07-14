@@ -19,14 +19,14 @@ telescope.setup({
     sorting_strategy = "descending",
     layout_strategy = "horizontal",
     layout_config = {
-      width = 0.75,
+      width = 0.85,
       preview_cutoff = 120,
       horizontal = {
         preview_width = function(_, cols, _)
           if cols < 120 then
-            return math.floor(cols * 0.5)
+            return math.floor(cols * 0.4)
           end
-          return math.floor(cols * 0.6)
+          return math.floor(cols * 0.5)
         end,
         mirror = false,
       },
@@ -95,11 +95,17 @@ telescope.setup({
       lazygit_floating_window_corner_chars = { '╭', '╮', '╰', '╯' }, -- customize lazygit popup window corner characters
       lazygit_floating_window_use_plenary = 0, -- use plenary.nvim to manage floating window if available
       lazygit_use_neovim_remote = 0, -- fallback to 0 if neovim-remote is not installed
-    }
+    },
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown({
+        -- even more opts
+      }),
+    },
   },
 })
 
 pcall(telescope.load_extension, "fzf")
 pcall(telescope.load_extension, "env")
+pcall(telescope.load_extension, "ui-select")
 -- pcall(telescope.load_extension, "lazygit")
 
