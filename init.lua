@@ -15,17 +15,17 @@ require("plugin-config.dashboard")
 require("plugin-config.project")
 require("plugin-config.nvim-treesitter")
 require("plugin-config.lsp_signature")
-require("plugin-config.diffview")
+-- require("plugin-config.diffview")
 require("plugin-config.autopairs")
-require("plugin-config.markdown-preview")
-require("plugin-config.marks")
+-- require("plugin-config.markdown-preview")
 require("plugin-config.cursorline")
 require("plugin-config.hop")
 require("plugin-config.lspsaga")
 require("plugin-config.which-key")
+require("plugin-config.toggleterm")
 
 -- coding 配置
-require("plugin-config.nvim-comment")
+-- require("plugin-config.nvim-comment")
 -- gitsigns 配置
 require("plugin-config.gitsigns")
 
@@ -33,5 +33,5 @@ require("plugin-config.gitsigns")
 require("lsp.setup")
 require("lsp.cmp")
 require("lsp.ui")
-require("lsp.null-ls")
+-- require("lsp.null-ls")
 
