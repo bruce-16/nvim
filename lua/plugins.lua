@@ -8,14 +8,14 @@ packer.startup({
     use 'navarasu/onedark.nvim'
     use({ "ellisonleao/gruvbox.nvim", requires = { "rktjmp/lush.nvim" } })
     -- tree
-    use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
+    use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons", lock = true })
     -- bufferline
     use({ "akinsho/bufferline.nvim", requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" }})
     -- lualine
     use("arkav/lualine-lsp-progress")
     use({'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }})
     -- telescope
-    use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim" } }
+    use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim" }, lock = true }
     -- use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim", { "kdheepak/lazygit.nvim" } } }
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use("nvim-telescope/telescope-ui-select.nvim")
@@ -25,7 +25,7 @@ packer.startup({
     -- project
     use("ahmedkhalf/project.nvim")
     -- treesitter （新增）
-    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", lock = true })
     -- 增加引号等
     use 'tpope/vim-surround'
     -- motion
@@ -36,15 +36,15 @@ packer.startup({
     -- comment
     use { "numToStr/Comment.nvim", config = function() require('Comment').setup() end }
     -- lspconfig
-    use({ "williamboman/nvim-lsp-installer" })
-    use({ "neovim/nvim-lspconfig" })
-    use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim" })
+    use({ "williamboman/nvim-lsp-installer", lock = true })
+    use({ "neovim/nvim-lspconfig", lock = true })
+    use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim", lock = true })
     -- 函数参数提示
     use "ray-x/lsp_signature.nvim"
     -- 补全引擎
-    use("hrsh7th/nvim-cmp")
+    use({ "hrsh7th/nvim-cmp", lock = true })
     -- snippet 引擎
-    use("hrsh7th/vim-vsnip")
+    use({ "hrsh7th/vim-vsnip", lock = true })
     -- 补全源
     use("hrsh7th/cmp-vsnip")
     use("hrsh7th/cmp-nvim-lsp") -- { name = nvim_lsp }
@@ -54,7 +54,7 @@ packer.startup({
     -- 常见编程语言代码段
     use("rafamadriz/friendly-snippets")
     -- 代码格式化
-    use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
+    -- use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
     -- git
     use 'lewis6991/gitsigns.nvim'
     -- 图标集
@@ -63,7 +63,7 @@ packer.startup({
     -- replace
     use 'brooth/far.vim'
     -- tmux + vim navigator
-    use 'christoomey/vim-tmux-navigator'
+    use({ 'christoomey/vim-tmux-navigator', lock = true })
     -- autopairs
     use 'windwp/nvim-autopairs'
     -- markdown
@@ -73,9 +73,11 @@ packer.startup({
     -- scroll
     use 'psliwka/vim-smoothie'
     -- which-key
-    use "folke/which-key.nvim"
+    use({ "folke/which-key.nvim", lock = true })
     -- terminal
-    use({ "akinsho/toggleterm.nvim" })
+    use({ "akinsho/toggleterm.nvim", lock = true })
+    -- spell checker
+    use({'lewis6991/spellsitter.nvim', lock = true })
 
 end,
 config = {

@@ -3,13 +3,13 @@ local map = vim.api.nvim_set_keymap
 -- 复用 opt 参数
 local opt = { noremap = true, silent = true }
 
--- windows 分屏快捷键
+-- -- windows 分屏快捷键
 map("n", "sv", ":vsp<CR>", opt)
 map("n", "sh", ":sp<CR>", opt)
--- 关闭当前
-map("n", "sc", "<C-w>c", opt)
--- 关闭其他
-map("n", "so", "<C-w>o", opt)
+-- -- 关闭当前
+-- map("n", "sc", "<C-w>c", opt)
+-- -- 关闭其他
+-- map("n", "so", "<C-w>o", opt)
 --
 -- 左右比例控制
 map("n", "s,", ":vertical resize -15<CR>", opt)
@@ -18,7 +18,7 @@ map("n", "s.", ":vertical resize +15<CR>", opt)
 map("n", "sj", ":resize +10<CR>", opt)
 map("n", "sk", ":resize -10<CR>", opt)
 -- 等比例
-map("n", "s=", "<C-w>=", opt)
+-- map("n", "s=", "<C-w>=", opt)
 -- Terminal相关
 -- map("n", "<leader>tt", ":sp | terminal<CR>", opt)
 -- map("n", "<leader>tv", ":vsp | terminal<CR>", opt)
@@ -59,8 +59,8 @@ map("i", "jk", "<ESC>", opt)
 -- 取消搜索高亮
 map("n", "<c-n>", ":nohls<CR>", opt)
 -- 折叠块
-map('n', 'za', ':foldclose<CR>', opt)
-map('n', 'az', ':foldopen<CR>', opt)
+map('n', 'zc', ':foldclose<CR>', opt)
+map('n', 'zo', ':foldopen<CR>', opt)
 
 -- ===========
 -- 插件快捷键
@@ -133,7 +133,7 @@ pluginKeys.mapLSP = function(mapbuf)
   mapbuf("n", "gr", "<cmd>Telescope lsp_references<CR>", opt)
   -- mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
   mapbuf("n", "K", "<cmd>Lspsaga hover_doc<CR>", opt)
-  mapbuf("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opt)
+  -- mapbuf("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opt)
   -- mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
   mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
   mapbuf("n", "gs", "<cmd>Lspsaga signature_help<CR>", opt)
@@ -311,17 +311,17 @@ pluginKeys.whichKeyMapForNormal = {
     I = { "<cmd>LspInstallInfo<CR>", "Installer Info" },
     -- j = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic" },
     -- k = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Prev Diagnostic" },
-    j = { "<cmd>lspsaga diagnostic_jump_next<CR>", "Next Diagnostic" },
-    k = { "<cmd>lspsaga diagnostic_jump_prev<CR>", "Prev Diagnostic" },
+    j = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Next Diagnostic" },
+    k = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Prev Diagnostic" },
     J = {
       function()
-        require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+        require("Lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
       end ,
       "Next Error",
     },
     K = {
       function()
-        require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+        require("Lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
       end ,
       "Prev Error",
     },
@@ -346,6 +346,57 @@ pluginKeys.whichKeyMapForNormal = {
       "Colorscheme with Preview",
     },
   },
+  w = {
+    name = "windows",
+    h = {
+      "<C-W>_",
+      "Max Height"
+    },
+    w = {
+      "<C-W>|",
+      "Max Width"
+    },
+    r = {
+      "<C-W>=",
+      "Resize All"
+    },
+    c = {
+      "<C-w>c",
+      "Close current window"
+    },
+    o = {
+      "<C-w>o",
+      "Close other window"
+    },
+  },
+  z = {
+    name = "work smarter",
+    -- 以下快捷键由其他文件拓展注册
+    -- 在 lua/custom-func 中可以找到
+  },
+  t = {
+    name = "terminal",
+    f = {
+      "<cmd>lua require'plugin-config.toggleterm'.toggleA()<CR>",
+      "Open the float terminal"
+    },
+    r = {
+      "<cmd>lua require'plugin-config.toggleterm'.toggleB()<CR>",
+      "Open the right terminal"
+    },
+    b = {
+      "<cmd>lua require'plugin-config.toggleterm'.toggleC()<CR>",
+      "Open the bottom terminal"
+    },
+    g = {
+      "<cmd>lua require'plugin-config.toggleterm'.toggleG()<CR>",
+      "Open the float lazygit window"
+    },
+    a = {
+      "<cmd>ToggleTermToggleAll<CR>",
+      "Toggle terminal all"
+    },
+  },
   T = {
     name = "Treesitter",
     i = { ":TSConfigInfo<cr>", "Info" },
@@ -358,19 +409,5 @@ pluginKeys.whichKeyMapForVisual = {
     s = { "<cmd>Gitsigns reset_hunk<CR>", "Reset Chunk"},
   }
 }
-
--- 自定义 toggleterm 3个不同类型的命令行窗口
--- <leader>ta 浮动
--- <leader>tb 右侧
--- <leader>tc 下方
--- 特殊lazygit 窗口，需要安装lazygit
--- <leader>tg lazygit
-pluginKeys.mapToggleTerm = function(toggleterm)
-  vim.keymap.set({ "n", "t" }, "<leader>tf", toggleterm.toggleA)
-  vim.keymap.set({ "n", "t" }, "<leader>tr", toggleterm.toggleB)
-  vim.keymap.set({ "n", "t" }, "<leader>tb", toggleterm.toggleC)
-  vim.keymap.set({ "n", "t" }, "<leader>tg", toggleterm.toggleG)
-  vim.keymap.set({ "n", "t" }, "<leader>ta", "<cmd>ToggleTermToggleAll<CR>", opt)
-end
 
 return pluginKeys

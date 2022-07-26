@@ -76,16 +76,17 @@ local setupOpt = {
   },
   renderer = {
     add_trailing = false,
-    group_empty = false,
+    group_empty = true,
     highlight_git = false,
     highlight_opened_files = "none",
     root_folder_modifier = ":~",
     indent_markers = {
-      enable = true,
+      enable = false,
       icons = {
-        corner = "└ ",
-        edge = "│ ",
-        none = "  ",
+        corner = "└",
+        edge = "│",
+        item = "│",
+        none = " ",
       },
     },
     icons = {

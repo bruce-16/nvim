@@ -1,4 +1,4 @@
----@diagnostic disable: missing-parameter
+-- @diagnostic disable: missing-parameter
 local status, toggleterm = pcall(require, "toggleterm")
 if not status then
   vim.notify("没有找到 toggleterm")
@@ -95,4 +95,4 @@ M.toggleG = function()
   lazygit:toggle()
 end
 
-require("keybindings").mapToggleTerm(M)
+return M

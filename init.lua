@@ -23,6 +23,7 @@ require("plugin-config.hop")
 require("plugin-config.lspsaga")
 require("plugin-config.which-key")
 require("plugin-config.toggleterm")
+require("custom-func.work")
 
 -- coding 配置
 -- require("plugin-config.nvim-comment")
