@@ -1,3 +1,17 @@
 vim.g.Illuminate_ftblacklist = {'alpha', 'NvimTree'}
-vim.api.nvim_set_keymap('n', '<a-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', {noremap=true})
-vim.api.nvim_set_keymap('n', '<a-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', {noremap=true})
+
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+  callback = function()
+    vim.cmd [[
+      augroup illuminate_augroup
+          autocmd!
+          autocmd VimEnter * hi link illuminatedWord CursorLine
+      augroup END
+
+      augroup illuminate_augroup
+        autocmd!
+        autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline
+      augroup END
+    ]]
+  end,
+})

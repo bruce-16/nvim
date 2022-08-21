@@ -32,8 +32,10 @@ end
 
 packer.startup({
   function(use)
-    -- colorschemes
+    -- packer plugin
     use 'wbthomason/packer.nvim'
+
+    -- colorschemes
     use 'folke/tokyonight.nvim'
     use 'navarasu/onedark.nvim'
     use({ "ellisonleao/gruvbox.nvim", requires = { "rktjmp/lush.nvim" } })
@@ -77,7 +79,7 @@ packer.startup({
     use("hrsh7th/cmp-buffer") -- { name = 'buffer' },
     use("hrsh7th/cmp-path") -- { name = 'path' }
     use("hrsh7th/cmp-cmdline") -- { name = 'cmdline' }
-    -- 代码格式化
+
     -- git
     use 'lewis6991/gitsigns.nvim'
 

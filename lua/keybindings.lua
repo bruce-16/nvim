@@ -249,6 +249,8 @@ pluginKeys.whichKeyMapForNormal = {
     },
     A = { "<cmd>lua vim.lsp.codelens.run()<CR>", "CodeLens Action" },
     r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
+    n = { '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', "Next Variable" },
+    p = { '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', "Pervious Variable" }
     -- r = { "<cmd>Lspsaga rename<CR>", "Rename" },
   },
   s = {
