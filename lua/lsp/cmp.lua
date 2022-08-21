@@ -12,40 +12,14 @@ if not snip_status_ok then
   return
 end
 
+-- my-snippets
+require("luasnip/loaders/from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets" } })
 require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()
   local col = vim.fn.col(".") - 1
   return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
-
-local kind_icons = {
-  Text = "",
-  Method = "",
-  Function = "",
-  Constructor = "",
-  Field = "",
-  Variable = "",
-  Class = "",
-  Interface = "",
-  Module = "",
-  Property = "",
-  Unit = "",
-  Value = "",
-  Enum = "",
-  Keyword = "",
-  Snippet = "",
-  Color = "",
-  File = "",
-  Reference = "",
-  Folder = "",
-  EnumMember = "",
-  Constant = "",
-  Struct = "",
-  Event = "",
-  Operator = "",
-  TypeParameter = "",
-}
 
 cmp.setup({
   snippet = {
@@ -136,5 +110,4 @@ cmp.setup.cmdline(":", {
     { name = "cmdline" },
   }),
 })
--- 设置自自定义代码段文件目录
-vim.g.vsnip_snippet_dir = '~/.config/nvim/snippets'
+

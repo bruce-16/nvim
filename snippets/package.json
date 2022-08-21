@@ -1,0 +1,27 @@
+{
+  "name": "my-nvim-snippets",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "typescript",
+          "typescriptreact",
+          "javascript",
+          "javascriptreact",
+          "vue",
+          "svelte"
+        ],
+        "path": "./ts.json"
+      },
+      {
+        "language": [
+          "all"
+        ],
+        "path": "./lua.json"
+      }
+    ]
+  }
+}

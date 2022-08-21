@@ -1,0 +1,12 @@
+{
+  "Lua_Comment": {
+    "perfix": "test",
+    "body": [
+      "-- =======",
+      "-- ======= ${0:description}",
+      "-- ======= ${1:sub_description}",
+      "-- ======="
+    ],
+    "description": "nvim lua 配置注释描述"
+  }
+}

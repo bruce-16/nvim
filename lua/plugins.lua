@@ -2,6 +2,7 @@
 -- 插件安装目录
 -- ~/.local/share/nvim/site/pack/packer/
 local fn = vim.fn
+
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
   vim.notify("正在安装Pakcer.nvim，请稍后...")
@@ -15,7 +16,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
     install_path,
   })
 
-  -- https://github.com/wbthomason/packer.nvim/issues/750
   local rtp_addition = vim.fn.stdpath("data") .. "/site/pack/*/start/*"
   if not string.find(vim.o.runtimepath, rtp_addition) then
     vim.o.runtimepath = rtp_addition .. "," .. vim.o.runtimepath
