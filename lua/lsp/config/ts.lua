@@ -1,21 +1,28 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver
 
 local runtime_path = vim.split(package.path, ';')
-local util = require "lspconfig".util
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
 local opts = {
-  settings = {
-    cmd = { "typescript-language-server", "--stdio" },
-    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-    init_options = {
-      hostInfo = "neovim"
-    },
-    root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git")
-  },
+  capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
   flags = {
     debounce_text_changes = 300,
+  },
+  -- https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils/blob/main/lua/nvim-lsp-ts-utils/utils.lua
+  -- 传入 tsserver 初始化参数
+  -- make inlay hints work
+  init_options = {
+    hostInfo = "neovim",
+    preferences = {
+      includeInlayParameterNameHints = "all",
+      includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+      includeInlayFunctionParameterTypeHints = true,
+      includeInlayVariableTypeHints = true,
+      includeInlayPropertyDeclarationTypeHints = true,
+      includeInlayFunctionLikeReturnTypeHints = true,
+      includeInlayEnumMemberValueHints = true,
+    },
   },
   on_attach = function(client, bufnr)
     -- 禁用格式化功能，交给专门插件插件处理
@@ -54,10 +61,26 @@ local opts = {
       always_organize_imports = true,
       -- filter diagnostics
       filter_out_diagnostics_by_severity = {},
-      filter_out_diagnostics_by_code = {},
+      -- https://github.com/microsoft/TypeScript/blob/main/src/compiler/diagnosticMessages.json
+      filter_out_diagnostics_by_code = { 80001 },
       -- inlay hints
       auto_inlay_hints = true,
       inlay_hints_highlight = "Comment",
+      inlay_hints_priority = 200, -- priority of the hint extmarks
+      inlay_hints_throttle = 150, -- throttle the inlay hint request
+      inlay_hints_format = { -- format options for individual hint kind
+        Type = {},
+        Parameter = {},
+        Enum = {},
+        -- Example format customization for `Type` kind:
+        -- Type = {
+        --     highlight = "Comment",
+        --     text = function(text)
+        --         return "->" .. text:sub(2)
+        --     end,
+        -- },
+      },
+
       -- update imports on file move
       update_imports_on_move = false,
       require_confirmation_on_move = false,
@@ -76,7 +99,7 @@ local opts = {
 
 return {
   on_setup = function(server, defaultOpts)
-    local options = vim.tbl_deep_extend("force", opts, defaultOpts)
+    local options = vim.tbl_deep_extend("force", defaultOpts, opts)
     server.setup(options)
   end,
 }

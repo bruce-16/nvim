@@ -33,6 +33,7 @@ map("t", "<C-t>", "<cmd>exe v:count1 . \"ToggleTerm\"<CR>", opt)
 -- visual模式下缩进代码
 map("v", "<", "<gv", opt)
 map("v", ">", ">gv", opt)
+
 --
 -- 上下滚动浏览
 map("n", "<C-u>", "10k", opt)
@@ -46,8 +47,8 @@ map("n", "<leader>Q", ":qa!<CR>", opt)
 -- map("n", "H", "^", opt);
 -- map("n", "L", "$", opt);
 -- bufferline swtich
-map("n", "<S-l>",  "<cmd>BufferLineCyclePrev<CR>", opt);
-map("n", "<S-h>", "<cmd>BufferLineCycleNext<CR>", opt);
+map("n", "<S-h>",  "<cmd>BufferLineCyclePrev<CR>", opt);
+map("n", "<S-l>", "<cmd>BufferLineCycleNext<CR>", opt);
 
 -- insert 模式下，跳到行首行尾
 map("i", "<C-h>", "<ESC>I", opt)
@@ -331,6 +332,10 @@ pluginKeys.whichKeyMapForVisual = {
   g = {
     name = "git",
     s = { "<cmd>Gitsigns reset_hunk<CR>", "Reset Chunk"},
+  },
+  l = {
+    name = "lsp",
+    f = { "<cmd>lua vim.lsp.buf.range_formatting()<CR>", "Formatting" },
   }
 }
 

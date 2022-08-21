@@ -55,7 +55,9 @@ lualine.setup({
     lualine_b = { "branch" },
     lualine_c = { diagnostics, {
       "lsp_progress",
-      spinner_symbols = { " ", " ", " ", " ", " ", " " },
+      display_components = { 'lsp_client_name', { 'title', 'percentage' }},
+      timer = { progress_enddelay = 1000, spinner = 1000, lsp_client_name_enddelay = 1000 },
+      spinner_symbols = { '🌑 ', '🌒 ', '🌓 ', '🌔 ', '🌕 ', '🌖 ', '🌗 ', '🌘 ' },
     }},
     lualine_x = { "filesize", diff, spaces, "encoding", filetype },
     lualine_y = { location },

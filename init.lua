@@ -33,11 +33,10 @@ require('autocommands')
 -- custom-func
 require("custom-func.work")
 
--- coding 配置
--- require("plugin-config.nvim-comment")
 -- gitsigns 配置
 require("plugin-config.gitsigns")
 
 -- lsp
 require("lsp.setup")
+require('lsp.null-ls')
 

@@ -1,5 +1,6 @@
 local null_ls_status_ok, null_ls = pcall(require, "null-ls")
 if not null_ls_status_ok then
+  vim.notify("没有找到 null-ls")
   return
 end
 
@@ -10,7 +11,7 @@ local diagnostics = null_ls.builtins.diagnostics
 
 -- https://github.com/prettier-solidity/prettier-plugin-solidity
 null_ls.setup {
-  debug = false,
+  debug = true,
   sources = {
     formatting.prettier.with {
       extra_filetypes = { "toml" },
@@ -35,5 +36,8 @@ null_ls.setup {
       prefer_local = "node_modules/.bin",
     }),
     diagnostics.flake8,
+    -- spell
+    diagnostics.misspell,
+    diagnostics.codespell,
   },
 }
