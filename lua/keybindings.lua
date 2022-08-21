@@ -139,16 +139,6 @@ pluginKeys.mapLSP = function(mapbuf)
   mapbuf("n", "gs", "<cmd>Lspsaga signature_help<CR>", opt)
 end
 
---========
---======== gitsigns
---========
--- [[
--- 迁移到 which-key
--- ]]
-pluginKeys.mapGitSigns = function(mapbuf)
---
-end
-
 -- ======
 -- ====== 函数参数提示
 -- ======
@@ -321,7 +311,7 @@ pluginKeys.whichKeyMapForNormal = {
       "Open the bottom terminal"
     },
     g = {
-      "<cmd>lua require'plugin-config.toggleterm'.toggleG()<CR>",
+      "<cmd>lua require'plugin-config.toggleterm'.lazygit_toggle()<CR>",
       "Open the float lazygit window"
     },
     a = {

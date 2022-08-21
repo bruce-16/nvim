@@ -2,10 +2,13 @@
 require('basic')
 -- 键盘映射
 require("keybindings")
+
 -- Packer 插件管理
 require("plugins")
+
 -- 主题设置
 require("colorscheme")
+
 -- 插件配置
 require("plugin-config.nvim-tree")
 require("plugin-config.bufferline")
@@ -15,14 +18,19 @@ require("plugin-config.dashboard")
 require("plugin-config.project")
 require("plugin-config.nvim-treesitter")
 require("plugin-config.lsp_signature")
--- require("plugin-config.diffview")
 require("plugin-config.autopairs")
--- require("plugin-config.markdown-preview")
-require("plugin-config.cursorline")
 require("plugin-config.hop")
 require("plugin-config.lspsaga")
 require("plugin-config.which-key")
 require("plugin-config.toggleterm")
+require("plugin-config.comment")
+require("plugin-config.illuminate")
+require("plugin-config.impatient")
+
+-- autocommands
+require('autocommands')
+
+-- custom-func
 require("custom-func.work")
 
 -- coding 配置
@@ -34,5 +42,5 @@ require("plugin-config.gitsigns")
 require("lsp.setup")
 require("lsp.cmp")
 require("lsp.ui")
--- require("lsp.null-ls")
+require("lsp.null-ls")
 

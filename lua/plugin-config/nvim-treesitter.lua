@@ -28,6 +28,9 @@ treesitter.setup({
       },
     },
   },
+  context_commentstring = {
+    enable = true
+  }
 })
 
 -- 开启 Folding 模块

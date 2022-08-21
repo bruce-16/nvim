@@ -53,15 +53,16 @@ packer.startup({
     use({ 'christoomey/vim-tmux-navigator', commit = "9ca5bfe" }) -- tmux + vim navigator
     use({ "akinsho/toggleterm.nvim" }) -- terminal
     use({ "folke/which-key.nvim", commit = "bd4411a" }) -- which-key
+    use { "lewis6991/impatient.nvim", commit = "b842e16" }
 
     -- coding plugin
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", commit = "d76b0de" })
     use 'tpope/vim-surround' -- 增加引号等
     use { 'phaazon/hop.nvim', branch = 'v2.0', commit = "2a1b686" } -- motion
-    use { "numToStr/Comment.nvim", commit = "ae8c440", config = function() require('Comment').setup() end } -- comment
+    use { "numToStr/Comment.nvim", commit = "350bf0c" } -- comment
     use 'brooth/far.vim' -- replace
-    use 'yamatsum/nvim-cursorline'
     use 'windwp/nvim-autopairs' -- autopairs
+    use ({ 'JoosepAlviste/nvim-ts-context-commentstring', commit = "37a97a0" })
     -- use({'lewis6991/spellsitter.nvim', lock = true, config = function() require('spellsitter').setup({ enable = true }) end }) -- spell checker
 
     -- snippets
@@ -70,14 +71,13 @@ packer.startup({
 
     -- cmp plugins
     use({ "hrsh7th/nvim-cmp", commit = "b1ebdb0" })
-    use("hrsh7th/cmp-vsnip")
     use { "saadparwaiz1/cmp_luasnip", commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36" }
+    use("hrsh7th/cmp-vsnip")
     use("hrsh7th/cmp-nvim-lsp") -- { name = nvim_lsp }
     use("hrsh7th/cmp-buffer") -- { name = 'buffer' },
     use("hrsh7th/cmp-path") -- { name = 'path' }
     use("hrsh7th/cmp-cmdline") -- { name = 'cmdline' }
     -- 代码格式化
-    -- use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
     -- git
     use 'lewis6991/gitsigns.nvim'
 
@@ -87,6 +87,9 @@ packer.startup({
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim", commit = "0a6a16e" })
     use "ray-x/lsp_signature.nvim"
     use ({ 'glepnir/lspsaga.nvim', commit = "8ca757a" })
+    use { "RRethy/vim-illuminate", commit = "78cf9c1" }
+    use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim", commit = "9d1f8dc" })
+
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
