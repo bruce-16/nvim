@@ -106,7 +106,7 @@ cmp.setup({
   "i",
   "s",
   })}),
--- 使用lspkind-nvim显示类型图标 (新增)
+  -- 使用lspkind-nvim显示类型图标 (新增)
   formatting = require('lsp.ui').formatting,
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,

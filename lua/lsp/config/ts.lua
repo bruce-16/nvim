@@ -4,7 +4,6 @@ local runtime_path = vim.split(package.path, ';')
 local util = require "lspconfig".util
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
-local ts_utils = require("nvim-lsp-ts-utils")
 
 local opts = {
   settings = {
@@ -30,7 +29,12 @@ local opts = {
     require('keybindings').mapLSP(buf_set_keymap)
     -- 保存时自动格式化
     -- vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
+
     -- TypeScript 增强
+    local ts_status_ok, ts_utils = pcall(require, "nvim-lsp-ts-utils")
+    if not ts_status_ok then
+      return
+    end
     ts_utils.setup({
       debug = false,
       disable_commands = false,
@@ -61,11 +65,18 @@ local opts = {
     })
     -- required to fix code action ranges and filter diagnostics
     ts_utils.setup_client(client)
+
+    local status_ok, illuminate = pcall(require, "illuminate")
+    if not status_ok then
+      return
+    end
+    illuminate.on_attach(client)
   end,
 }
 
 return {
-  on_setup = function(server)
-    server.setup(opts)
+  on_setup = function(server, defaultOpts)
+    local options = vim.tbl_deep_extend("force", opts, defaultOpts)
+    server.setup(options)
   end,
 }
