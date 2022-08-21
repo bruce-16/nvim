@@ -66,8 +66,8 @@ cmp.setup({
  },
   -- 快捷键设置
   mapping = cmp.mapping.preset.insert({
-    ["<C-p>"] = cmp.mapping.select_prev_item(),
-    ["<C-n>"] = cmp.mapping.select_next_item(),
+    ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+    ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
     ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
     ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
     ["<C-,>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
