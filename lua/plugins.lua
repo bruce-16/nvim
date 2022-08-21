@@ -3,10 +3,9 @@
 -- ~/.local/share/nvim/site/pack/packer/
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-local paccker_bootstrap
 if fn.empty(fn.glob(install_path)) > 0 then
   vim.notify("正在安装Pakcer.nvim，请稍后...")
-  paccker_bootstrap = fn.system({
+  PACKER_BOOTSTRAP = fn.system({
     "git",
     "clone",
     "--depth",
@@ -31,80 +30,69 @@ if not status_ok then
   return
 end
 
-local packer = require("packer")
 packer.startup({
   function(use)
-    -- Packer 可以管理自己本身
+    -- colorschemes
     use 'wbthomason/packer.nvim'
-    -- 主题
     use 'folke/tokyonight.nvim'
     use 'navarasu/onedark.nvim'
     use({ "ellisonleao/gruvbox.nvim", requires = { "rktjmp/lush.nvim" } })
-    -- tree
+    use 'onsails/lspkind-nvim'
+
+    -- project
+    use("ahmedkhalf/project.nvim")
     use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons", commit = "09a5126" })
-    -- bufferline
     use({ "akinsho/bufferline.nvim", requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" }, commit = "06eb4ad" })
-    -- lualine
     use("arkav/lualine-lsp-progress")
     use({'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true, commit = "c0510dd" }})
-    -- telescope
     use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim", commit = "d793de0" } }
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make', commit = "6791f74" }
     use({ "nvim-telescope/telescope-ui-select.nvim", commit = "62ea5e5" })
     use { "LinArcX/telescope-env.nvim" }
-    -- dashboard-nvim
-    -- use("glepnir/dashboard-nvim")
-    -- project
-    use("ahmedkhalf/project.nvim")
-    -- treesitter
+    use 'psliwka/vim-smoothie' -- scroll
+    use({ 'christoomey/vim-tmux-navigator', commit = "9ca5bfe" }) -- tmux + vim navigator
+    use({ "akinsho/toggleterm.nvim" }) -- terminal
+    use({ "folke/which-key.nvim", commit = "bd4411a" }) -- which-key
+
+    -- coding plugin
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", commit = "d76b0de" })
-    -- 增加引号等
-    use 'tpope/vim-surround'
-    -- motion
-    use { 'phaazon/hop.nvim', branch = 'v2.0', commit = "2a1b686" }
-    -- comment
-    use { "numToStr/Comment.nvim", commit = "ae8c440", config = function() require('Comment').setup() end }
-    -- lspconfig
-    use({ "williamboman/nvim-lsp-installer", commit = "ae913cb" })
-    use({ "neovim/nvim-lspconfig", commit = "da7461b" })
-    use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim", commit = "0a6a16e" })
-    -- 函数参数提示
-    use "ray-x/lsp_signature.nvim"
-    -- 补全引擎
+    use 'tpope/vim-surround' -- 增加引号等
+    use { 'phaazon/hop.nvim', branch = 'v2.0', commit = "2a1b686" } -- motion
+    use { "numToStr/Comment.nvim", commit = "ae8c440", config = function() require('Comment').setup() end } -- comment
+    use 'brooth/far.vim' -- replace
+    use 'yamatsum/nvim-cursorline'
+    use 'windwp/nvim-autopairs' -- autopairs
+    -- use({'lewis6991/spellsitter.nvim', lock = true, config = function() require('spellsitter').setup({ enable = true }) end }) -- spell checker
+
+    -- snippets
+    use { "L3MON4D3/LuaSnip", commit = "79b2019c68a2ff5ae4d732d50746c901dd45603a" } --snippet engine
+    use("rafamadriz/friendly-snippets")
+
+    -- cmp plugins
     use({ "hrsh7th/nvim-cmp", commit = "b1ebdb0" })
-    -- snippet 引擎
-    use({ "hrsh7th/vim-vsnip", commit = "8f199ef" })
-    -- 补全源
     use("hrsh7th/cmp-vsnip")
+    use { "saadparwaiz1/cmp_luasnip", commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36" }
     use("hrsh7th/cmp-nvim-lsp") -- { name = nvim_lsp }
     use("hrsh7th/cmp-buffer") -- { name = 'buffer' },
     use("hrsh7th/cmp-path") -- { name = 'path' }
     use("hrsh7th/cmp-cmdline") -- { name = 'cmdline' }
-    -- 常见编程语言代码段
-    use("rafamadriz/friendly-snippets")
     -- 代码格式化
     -- use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
     -- git
     use 'lewis6991/gitsigns.nvim'
-    -- 图标集
-    use 'onsails/lspkind-nvim'
-    use 'glepnir/lspsaga.nvim'
-    -- replace
-    use 'brooth/far.vim'
-    -- tmux + vim navigator
-    use({ 'christoomey/vim-tmux-navigator', commit = "9ca5bfe" })
-    -- autopairs
-    use 'windwp/nvim-autopairs'
-    -- cursorline
-    use 'yamatsum/nvim-cursorline'
-    -- scroll
-    use 'psliwka/vim-smoothie'
-    -- which-key
-    use({ "folke/which-key.nvim", commit = "bd4411a" })
-    -- terminal
-    use({ "akinsho/toggleterm.nvim" })
-    -- spell checker
-    -- use({'lewis6991/spellsitter.nvim', lock = true, config = function() require('spellsitter').setup({ enable = true }) end })
+
+    -- lsp
+    use({ "williamboman/nvim-lsp-installer", commit = "ae913cb" })
+    use({ "neovim/nvim-lspconfig", commit = "da7461b" })
+    use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim", commit = "0a6a16e" })
+    use "ray-x/lsp_signature.nvim"
+    use ({ 'glepnir/lspsaga.nvim', commit = "8ca757a" })
+
+    -- Automatically set up your configuration after cloning packer.nvim
+    -- Put this at the end after all plugins
+    if PACKER_BOOTSTRAP then
+      require("packer").sync()
+    end
   end,
   config = {
     -- 锁定插件版本在snapshots目录
