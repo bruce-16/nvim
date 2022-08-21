@@ -11,12 +11,11 @@ map("n", "sh", ":sp<CR>", opt)
 -- -- 关闭其他
 -- map("n", "so", "<C-w>o", opt)
 --
--- 左右比例控制
-map("n", "s,", ":vertical resize -15<CR>", opt)
-map("n", "s.", ":vertical resize +15<CR>", opt)
--- 上下比例
-map("n", "sj", ":resize +10<CR>", opt)
-map("n", "sk", ":resize -10<CR>", opt)
+-- Resize with arrows
+map("n", "<C-S-Up>", ":resize -2<CR>", opt)
+map("n", "<C-S-Down>", ":resize +2<CR>", opt)
+map("n", "<C-S-Left>", ":vertical resize -2<CR>", opt)
+map("n", "<C-S-Right>", ":vertical resize +2<CR>", opt)
 -- 等比例
 -- map("n", "s=", "<C-w>=", opt)
 -- Terminal相关
@@ -43,11 +42,12 @@ map("n", "<C-d>", "10j", opt)
 map("n", "<leader>q", ":q<CR>", opt)
 map("n", "<leader>qq", ":q!<CR>", opt)
 map("n", "<leader>Q", ":qa!<CR>", opt)
--- 保存
--- map("n", "<leader>s", ":w<CR>", opt)
 -- mention
-map("n", "H", "^", opt);
-map("n", "L", "$", opt);
+-- map("n", "H", "^", opt);
+-- map("n", "L", "$", opt);
+-- bufferline swtich
+map("n", "<S-l>",  "<cmd>BufferLineCyclePrev<CR>", opt);
+map("n", "<S-h>", "<cmd>BufferLineCycleNext<CR>", opt);
 
 -- insert 模式下，跳到行首行尾
 map("i", "<C-h>", "<ESC>I", opt)
