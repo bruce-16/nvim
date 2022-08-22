@@ -9,14 +9,14 @@ lspsaga.init_lsp_saga({
   border_style = "single",
   -- when cursor in saga window you config these to move
   move_in_saga = { prev = '<C-p>',next = '<C-n>'},
-  diagnostic_header = { "😡", "😤", "😥", "😐" },
+  diagnostic_header = { "😡 ", "😤 ", "😥 ",  "😐 " },
   show_diagnostic_source = true,
-  -- code_action_icon = "💡",
+  code_action_icon = "💡 ",
   code_action_num_shortcut = true,
   -- same as nvim-lightbulb but async
   code_action_lightbulb = {
     enable = false,
-    sign = true,
+    sign = false,
     sign_priority = 20,
     virtual_text = true,
   },
@@ -28,7 +28,7 @@ lspsaga.init_lsp_saga({
     open = "o",
     vsplit = "s",
     split = "i",
-    tabe = "t",
+    table = "t",
     quit = "q",
     scroll_down = "<C-d>",
     scroll_up = "<C-u>", -- quit can be a table

@@ -2,18 +2,24 @@
 我的工作集: 
 1. neovim
 2. tmux
-3. alacritty
+3. iterm2
 
-主要为 neovim 编辑器配置，使用 Lua 作为配置语言，入口为 `init.lua`。
+neovim 编辑器配置，使用 Lua 作为配置语言，入口为 `init.lua`。
 
 # 目录
 目录结构不会变化，具体文件还会更新
 ```shell
+.
 ├── README.md
+├── ftdetect
+│   └── json.lua
 ├── init.lua
 ├── lua
+│   ├── autocommands.lua
 │   ├── basic.lua
 │   ├── colorscheme.lua
+│   ├── custom-func
+│   │   └── work.lua
 │   ├── keybindings.lua
 │   ├── lsp
 │   │   ├── cmp.lua
@@ -26,34 +32,51 @@
 │   │   │   ├── rust.lua
 │   │   │   ├── rust_analyzer.lua
 │   │   │   └── ts.lua
+│   │   ├── handlers.lua
+│   │   ├── lsp-installer.lua
 │   │   ├── null-ls.lua
 │   │   ├── setup.lua
 │   │   └── ui.lua
 │   ├── plugin-config
 │   │   ├── autopairs.lua
 │   │   ├── bufferline.lua
+│   │   ├── comment.lua
+│   │   ├── cursorline.lua
 │   │   ├── dashboard.lua
 │   │   ├── diffview.lua
 │   │   ├── gitsigns.lua
+│   │   ├── hop.lua
+│   │   ├── illuminate.lua
+│   │   ├── impatient.lua
 │   │   ├── lsp_signature.lua
+│   │   ├── lspsaga.lua
 │   │   ├── lualine.lua
 │   │   ├── markdown-preview.lua
-│   │   ├── nvim-comment.lua
 │   │   ├── nvim-tree.lua
 │   │   ├── nvim-treesitter.lua
 │   │   ├── project.lua
-│   │   └── telescope.lua
+│   │   ├── telescope
+│   │   │   └── custom-finder.lua
+│   │   ├── telescope.lua
+│   │   ├── toggleterm.lua
+│   │   └── which-key.lua
 │   └── plugins.lua
 ├── plugin
 │   └── packer_compiled.lua
+├── snippets
+│   ├── lua.json
+│   ├── package.json
+│   └── ts.json
 ```
 # Start
 ## 依赖安装
-1. 安装 [packer]( https://github.com/wbthomason/packer.nvim )
-2. 安装 [Nerd Font]( https://www.nerdfonts.com/ )
-3. 安装 [sharkdp/fd (finder)](https://github.com/sharkdp/fd)
-4. 安装 [fzf](https://github.com/junegunn/fzf)
-5. 安装 [Ag](https://github.com/ggreer/the_silver_searcher#installing)
+1. python
+1. node
+3. 安装 [packer]( https://github.com/wbthomason/packer.nvim )
+4. 安装 [Nerd Font]( https://www.nerdfonts.com/ )
+5. 安装 [sharkdp/fd (finder)](https://github.com/sharkdp/fd)
+6. 安装 [fzf](https://github.com/junegunn/fzf)
+7. 安装 [Ag](https://github.com/ggreer/the_silver_searcher#installing)
 ## 拉取代码
 clone 该仓库放在 `~/.config/nvim` 下。
 ```bash
@@ -87,7 +110,10 @@ bind-key -T copy-mode-vi 'C-j' if -F '#{pane_at_bottom}' '' 'select-pane -D'
 bind-key -T copy-mode-vi 'C-k' if -F '#{pane_at_top}' '' 'select-pane -U'
 bind-key -T copy-mode-vi 'C-l' if -F '#{pane_at_right}' '' 'select-pane -R'
 ```
-## alacritty 配置
+
+# 终端配置
+**最后还是用回了 iterm2 终端，其他配置太麻烦了，总是有一些奇奇怪怪的问题要花时间去解决**
+## alacritty 配置（弃用）
 暂时使用官网默认，下载配置文件，根据需要去掉些许配置, 基本配置，不太重要
 ```yml
 window:
@@ -182,7 +208,7 @@ schemes:
 colors: *tokyo-night-storm
 ```
 
-## kitty 终端的一些配置
+## kitty 终端的一些配置（弃用）
 由于 alacritty 对中文输入法不太友好，最后使用 kitty，但是只是简单配置
 
 主要是配置了一下主题，不太重要，就不贴配置了

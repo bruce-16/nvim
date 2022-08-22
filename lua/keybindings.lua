@@ -46,7 +46,7 @@ map("n", "<leader>Q", ":qa!<CR>", opt)
 -- mention
 -- map("n", "H", "^", opt);
 -- map("n", "L", "$", opt);
--- bufferline swtich
+-- bufferline switch
 map("n", "<S-h>",  "<cmd>BufferLineCyclePrev<CR>", opt);
 map("n", "<S-l>", "<cmd>BufferLineCycleNext<CR>", opt);
 
@@ -168,7 +168,7 @@ pluginKeys.whichKeyMapForNormal = {
   g = {
     name = "git",
     j = { "<cmd>Gitsigns next_hunk<CR>", "Next Hunk"},
-    k = { "<cmd>Gitsigns prev_hunk<CR>", "Pervious Hunk"},
+    k = { "<cmd>Gitsigns prev_hunk<CR>", "Previous Hunk"},
     s = { "<cmd>Gitsigns reset_hunk<CR>", "Reset Hunk"},
     R = { "<cmd>Gitsigns reset_buffer<CR>", "Reset Buffer" },
     p = { "<cmd>Gitsigns preview_hunk<CR>", "Preview Hunk"},
@@ -251,19 +251,22 @@ pluginKeys.whichKeyMapForNormal = {
     A = { "<cmd>lua vim.lsp.codelens.run()<CR>", "CodeLens Action" },
     r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
     n = { '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', "Next Variable" },
-    p = { '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', "Pervious Variable" }
+    p = { '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', "Previous Variable" }
     -- r = { "<cmd>Lspsaga rename<CR>", "Rename" },
   },
   s = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<CR>", "Checkout branch" },
-    c = { "<cmd>Telescope colorscheme<CR>", "Colorscheme" },
+    -- c = { "<cmd>Telescope colorscheme<CR>", "Colorscheme" },
     f = { "<cmd>Telescope find_files<CR>", "File" },
     h = { "<cmd>Telescope help_tags<CR>", "Help" },
     M = { "<cmd>Telescope man_pages<CR>", "Man Pages" },
     r = { "<cmd>Telescope oldfiles<CR>", "Open Recent File" },
     R = { "<cmd>Telescope registers<CR>", "Registers" },
     t = { "<cmd>Telescope live_grep<CR>", "String" },
+    s = { require("plugin-config.telescope.custom-finder").live_grep_strict, "Live Grep Strict" },
+    w = { require("plugin-config.telescope.custom-finder").live_grep_word, "Live Grep Word" },
+    c = { require("plugin-config.telescope.custom-finder").live_grep_case_sensitive, "Live Search case sensitively" },
     k = { "<cmd>Telescope keymaps<CR>", "Keymaps" },
     C = { "<cmd>Telescope commands<CR>", "Commands" },
     p = {

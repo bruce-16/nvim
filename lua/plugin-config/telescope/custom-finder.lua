@@ -21,5 +21,47 @@ function M.find_project_files()
   end
 end
 
+-- 大小写、单词
+function M.live_grep_strict()
+  local vimgrep_arguments = {
+    "rg",
+    "--color=never",
+    "--no-heading",
+    "--line-number",
+    "--column",
+    "--case-sensitive",
+    "-w",
+  }
+  builtin.live_grep({ vimgrep_arguments = vimgrep_arguments })
+end
+
+-- 搜索单词
+function M.live_grep_word()
+  local vimgrep_arguments = {
+    "rg",
+    "--color=never",
+    "--no-heading",
+    "--line-number",
+    "--column",
+    "--smart-case",
+    "-w",
+  }
+  builtin.live_grep({ vimgrep_arguments = vimgrep_arguments })
+end
+
+-- 大小写敏感
+function M.live_grep_case_sensitive()
+  local vimgrep_arguments = {
+    "rg",
+    "--color=never",
+    "--no-heading",
+    "--line-number",
+    "--column",
+    "--case-sensitive",
+    '--trim',
+  }
+  builtin.live_grep({ vimgrep_arguments = vimgrep_arguments })
+end
+
 return M
 
