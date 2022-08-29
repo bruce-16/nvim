@@ -152,7 +152,7 @@ map("n", "<leader><leader>w", ":HopWord<CR>", opt)
 map("n", "<leader><leader>b", ":HopWordBC<CR>", opt)
 map("n", "<leader><leader>j", ":HopLineAC<CR>", opt)
 map("n", "<leader><leader>k", ":HopLineBC<CR>", opt)
-map("n", "<leader><leader>/", ":HopPattern", opt)
+map("n", "<leader><leader>/", ":HopPattern ", opt)
 map("n", "<leader><leader>l", ":HopWordCurrentLineAC<CR>", opt)
 map("n", "<leader><leader>h", ":HopWordCurrentLineBC<CR>", opt)
 
@@ -186,13 +186,10 @@ pluginKeys.whichKeyMapForNormal = {
       "<cmd>BufferLinePickClose<CR>",
       "Pick which buffer to close",
     },
-
   -- 左右Tab切换
-    h = { "<cmd>BufferLineCyclePrev<CR>", "BufferLine Previous"},
-    l = { "<cmd>BufferLineCycleNext<CR>", "BufferLine Next"},
-    H = { "<cmd>BufferLineCloseLeft<CR>", "Close all to the left" },
-    L = { "<cmd>BufferLineCloseRight<CR>", "Close all to the right" },
-    D = {
+    h = { "<cmd>BufferLineCloseLeft<CR>", "Close all to the left" },
+    l = { "<cmd>BufferLineCloseRight<CR>", "Close all to the right" },
+    s = {
       "<cmd>BufferLineSortByDirectory<CR>",
       "Sort by directory",
     },
@@ -324,10 +321,6 @@ pluginKeys.whichKeyMapForNormal = {
       "<cmd>ToggleTermToggleAll<CR>",
       "Toggle terminal all"
     },
-  },
-  T = {
-    name = "Treesitter",
-    i = { ":TSConfigInfo<cr>", "Info" },
   },
 }
 
