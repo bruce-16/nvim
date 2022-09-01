@@ -1,0 +1,12 @@
+{
+  "Arrow Function": {
+    "prefix": "af",
+    "body": ["($1) => { $2 }"],
+    "description": "arrow function"
+  },
+  "Custom Log": {
+    "prefix": "cl",
+    "body": ["console.log('@@ $1');"],
+    "description": "custom log prefix"
+  }
+}

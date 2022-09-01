@@ -17,7 +17,7 @@
           "vue",
           "svelte"
         ],
-        "path": "./ts.json"
+        "path": "./fe.json"
       }
     ]
   }
