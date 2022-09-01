@@ -1,9 +1,7 @@
 {
-  "JS_Log": {
-    "perfix": "jslog",
-    "body": [
-      "console.log(\"@@ -${0:desc}\", ${1:params});"
-    ],
-    "description": "js 专属 log"
+  "Arrow Function": {
+    "prefix": "af",
+    "body": ["($1) => { $2 }"],
+    "description": "arrow function"
   }
 }

@@ -1,7 +1,6 @@
 -- https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
 -- https://github.com/hrsh7th/nvim-cmp
 -- https://github.com/onsails/lspkind-nvim
-
 local cmp_status_ok, cmp = pcall(require, "cmp")
 if not cmp_status_ok then
   return
@@ -13,8 +12,8 @@ if not snip_status_ok then
 end
 
 -- my-snippets
-require("luasnip/loaders/from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets" } })
-require("luasnip/loaders/from_vscode").lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load({ paths = vim.fn.stdpath("config") .. "/snippets" })
+require("luasnip.loaders.from_vscode").lazy_load()
 
 local check_backspace = function()
   local col = vim.fn.col(".") - 1
@@ -30,13 +29,13 @@ cmp.setup({
   -- 补全源
  -- 来源
  sources = {
-   { name = "nvim_lsp" },
-   { name = "nvim_lua" },
-   { name = "nvim_lsp_signature_help" },
-   { name = "luasnip" },
-   { name = "vsnip" },
-   { name = "buffer" },
-   { name = "path" },
+   { name = "luasnip", group_index = 1 },
+   { name = "nvim_lsp", group_index = 1 },
+   { name = "nvim_lsp_signature_help", group_index = 1 },
+   { name = "nvim_lua", group_index = 2 },
+   { name = "vsnip", group_index = 2 },
+   { name = "buffer", group_index = 2 },
+   { name = "path", group_index = 2 },
  },
   -- 快捷键设置
   mapping = cmp.mapping.preset.insert({
@@ -110,4 +109,29 @@ cmp.setup.cmdline(":", {
     { name = "cmdline" },
   }),
 })
+
+-- luasnip expand 配置
+vim.keymap.set({ "i", "s" }, '<C-l>', function()
+  if luasnip.expand_or_jumpable() then
+    luasnip.expand_or_jump()
+  end
+end)
+
+vim.keymap.set({ "i", "s" }, '<C-h>', function()
+  if luasnip.jumpable(-1) then
+    luasnip.jump(-1)
+  end
+end)
+
+vim.keymap.set({ "i", "s" }, '<C-j>', function()
+  if luasnip.choice_active() then
+    luasnip.change_choice(1)
+  end
+end)
+
+vim.keymap.set({ "i", "s" }, '<C-k>', function()
+  if luasnip.choice_active() then
+    luasnip.change_choice(-1)
+  end
+end)
 

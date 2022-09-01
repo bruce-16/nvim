@@ -9,7 +9,8 @@ lspsaga.init_lsp_saga({
   border_style = "single",
   -- when cursor in saga window you config these to move
   move_in_saga = { prev = '<C-p>',next = '<C-n>'},
-  diagnostic_header = { "😡 ", "😤 ", "😥 ",  "😐 " },
+  -- Error,Warn,Info,Hint
+  diagnostic_header = { "⓪ ", "① ", "② ", "③ " },
   show_diagnostic_source = true,
   code_action_icon = "💡 ",
   code_action_num_shortcut = true,
