@@ -42,7 +42,7 @@ packer.startup({
     use 'onsails/lspkind-nvim'
 
     -- project
-    use("ahmedkhalf/project.nvim")
+    -- use("ahmedkhalf/project.nvim")
     use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons", commit = "09a5126" })
     use({ "akinsho/bufferline.nvim", requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" }, commit = "06eb4ad" })
     use("arkav/lualine-lsp-progress")
@@ -52,14 +52,14 @@ packer.startup({
     use({ "nvim-telescope/telescope-ui-select.nvim", commit = "62ea5e5" })
     use { "LinArcX/telescope-env.nvim" }
     use 'psliwka/vim-smoothie' -- scroll
-    use({ 'christoomey/vim-tmux-navigator', commit = "9ca5bfe" }) -- tmux + vim navigator
+    use({ 'christoomey/vim-tmux-navigator' }) -- tmux + vim navigator
     use({ "akinsho/toggleterm.nvim" }) -- terminal
     use({ "folke/which-key.nvim", commit = "bd4411a" }) -- which-key
     use { "lewis6991/impatient.nvim", commit = "b842e16" }
 
     -- coding plugin
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", commit = "d76b0de" })
-    use 'tpope/vim-surround' -- 增加引号等
+    use { 'kylechui/nvim-surround', tag = "main" } -- 增加引号等
     use { 'phaazon/hop.nvim', branch = 'v2.0', commit = "2a1b686" } -- motion
     use { "numToStr/Comment.nvim", commit = "350bf0c" } -- comment
     use 'brooth/far.vim' -- replace

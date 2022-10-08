@@ -174,6 +174,11 @@ _G.packer_plugins = {
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/lush.nvim",
     url = "https://github.com/rktjmp/lush.nvim"
   },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
@@ -198,6 +203,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-surround"] = {
+    loaded = true,
+    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/nvim-surround",
+    url = "https://github.com/kylechui/nvim-surround"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -233,11 +243,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
-  },
-  ["project.nvim"] = {
-    loaded = true,
-    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/project.nvim",
-    url = "https://github.com/ahmedkhalf/project.nvim"
   },
   ["telescope-env.nvim"] = {
     loaded = true,
@@ -283,11 +288,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/vim-smoothie",
     url = "https://github.com/psliwka/vim-smoothie"
-  },
-  ["vim-surround"] = {
-    loaded = true,
-    path = "/Users/zhangzhe/.local/share/nvim/site/pack/packer/start/vim-surround",
-    url = "https://github.com/tpope/vim-surround"
   },
   ["vim-tmux-navigator"] = {
     loaded = true,

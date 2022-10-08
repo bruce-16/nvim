@@ -28,7 +28,12 @@ map("t", "<C-j>", [[ <C-\><C-N><C-w>j ]], opt)
 map("t", "<C-k>", [[ <C-\><C-N><C-w>k ]], opt)
 map("t", "<C-l>", [[ <C-\><C-N><C-w>l ]], opt)
 map("t", "<C-t>", "<cmd>exe v:count1 . \"ToggleTerm\"<CR>", opt)
---
+
+-- tmux
+map("n", "<C-h>", ":TmuxNavigateLeft<cr>", opt)
+map("n", "<C-j>", ":TmuxNavigateDown<cr>", opt)
+map("n", "<C-k>", ":TmuxNavigateUp<cr>", opt)
+map("n", "<C-l>", ":TmuxNavigateRight<cr>", opt)
 
 -- visual模式下缩进代码
 map("v", "<", "<gv", opt)
@@ -201,7 +206,7 @@ pluginKeys.whichKeyMapForNormal = {
   l = {
     name = "lsp",
     -- a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
-    a = { "<cmd>Lspsaga range_code_action<CR>", "Code Action" },
+    a = { "<cmd>Lspsaga code_action<CR>", "Code Action" },
     d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<CR>", "Buffer Diagnostics" },
     w = { "<cmd>Telescope diagnostics<CR>", "Diagnostics" },
     i = { "<cmd>LspInfo<CR>", "Info" },

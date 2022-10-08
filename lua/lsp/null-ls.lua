@@ -35,9 +35,23 @@ null_ls.setup {
       },
       prefer_local = "node_modules/.bin",
     }),
-    diagnostics.flake8,
-    -- spell
-    diagnostics.misspell,
-    diagnostics.codespell,
+    diagnostics.cspell.with({
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
+        "css",
+        "scss",
+        "less",
+        "html",
+        "json",
+        "yaml",
+      },
+      extra_args = {
+        '--show-suggestions',
+      },
+    })
   },
 }
