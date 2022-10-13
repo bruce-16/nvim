@@ -1,39 +1,38 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#cssls
 --Enable (broadcasting) snippet capability for completion
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-local runtime_path = vim.split(package.path, ';')
-local util = require "lspconfig".util
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
-
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
+local common = require("lsp.common-config")
 local opts = {
+  capabilities = common.capabilities,
+  flags = common.flags,
+  on_attach = function(client, bufnr)
+    common.disableFormat(client)
+    common.keyAttach(bufnr)
+  end,
   settings = {
-    capabilities = capabilities,
-    cmd = { "vscode-css-language-server", "--stdio" },
-    filetypes = { "css", "scss", "less" },
-    root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
-    settings = {
-      css = {
-        validate = true
+    css = {
+      validate = true,
+      -- tailwindcss
+      lint = {
+        unknownAtRules = "ignore",
       },
-      less = {
-        validate = true
+    },
+    less = {
+      validate = true,
+      lint = {
+        unknownAtRules = "ignore",
       },
-      scss = {
-        validate = true
-      }
-    }
-  },
-  flags = {
-    debounce_text_changes = 300,
+    },
+    scss = {
+      validate = true,
+      lint = {
+        unknownAtRules = "ignore",
+      },
+    },
   },
 }
 
 return {
-  on_setup = function(server, defaultOpts)
-    local options = vim.tbl_deep_extend("force", opts, defaultOpts)
-    server.setup(options)
+  on_setup = function(server)
+    server.setup(opts)
   end,
 }

@@ -43,37 +43,36 @@ packer.startup({
 
     -- project
     -- use("ahmedkhalf/project.nvim")
-    use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons", commit = "09a5126" })
-    use({ "akinsho/bufferline.nvim", requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" }, commit = "06eb4ad" })
+    use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons", commit = "4a01f90" })
+    use({ "akinsho/bufferline.nvim", requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" }, commit = "0606cee" })
     use("arkav/lualine-lsp-progress")
-    use({'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true, commit = "c0510dd" }})
-    use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim", commit = "d793de0" } }
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make', commit = "6791f74" }
-    use({ "nvim-telescope/telescope-ui-select.nvim", commit = "62ea5e5" })
+    use({'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true, commit = "edca2b0" }})
+    use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim", commit = "5fadc24" } }
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make', commit = "65c0ee3" }
+    use({ "nvim-telescope/telescope-ui-select.nvim" })
     use { "LinArcX/telescope-env.nvim" }
     use 'psliwka/vim-smoothie' -- scroll
     use({ 'christoomey/vim-tmux-navigator' }) -- tmux + vim navigator
     use({ "akinsho/toggleterm.nvim" }) -- terminal
-    use({ "folke/which-key.nvim", commit = "bd4411a" }) -- which-key
-    use { "lewis6991/impatient.nvim", commit = "b842e16" }
+    use({ "folke/which-key.nvim", commit = "6885b66" }) -- which-key
+    use { "lewis6991/impatient.nvim" }
 
     -- coding plugin
-    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", commit = "d76b0de" })
+    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", commit = "5d11dfc" })
     use { 'kylechui/nvim-surround', tag = "main" } -- 增加引号等
     use { 'phaazon/hop.nvim', branch = 'v2.0', commit = "2a1b686" } -- motion
-    use { "numToStr/Comment.nvim", commit = "350bf0c" } -- comment
+    use { "numToStr/Comment.nvim", commit = "d30f2b0" } -- comment
     use 'brooth/far.vim' -- replace
     use 'windwp/nvim-autopairs' -- autopairs
-    use ({ 'JoosepAlviste/nvim-ts-context-commentstring', commit = "37a97a0" })
-    -- use({'lewis6991/spellsitter.nvim', lock = true, config = function() require('spellsitter').setup({ enable = true }) end }) -- spell checker
+    use ({ 'JoosepAlviste/nvim-ts-context-commentstring' })
 
     -- snippets
-    use { "L3MON4D3/LuaSnip", commit = "79b2019c68a2ff5ae4d732d50746c901dd45603a" } --snippet engine
+    use { "L3MON4D3/LuaSnip", commit = "8f8d493" } --snippet engine
     use("rafamadriz/friendly-snippets")
 
     -- cmp plugins
-    use({ "hrsh7th/nvim-cmp", commit = "b1ebdb0" })
-    use { "saadparwaiz1/cmp_luasnip", commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36" }
+    use({ "hrsh7th/nvim-cmp", commit = "0e436ee" })
+    use { "saadparwaiz1/cmp_luasnip" }
     use("hrsh7th/cmp-vsnip")
     use("hrsh7th/cmp-nvim-lsp") -- { name = nvim_lsp }
     use("hrsh7th/cmp-buffer") -- { name = 'buffer' },
@@ -84,13 +83,20 @@ packer.startup({
     use 'lewis6991/gitsigns.nvim'
 
     -- lsp
-    use({ "williamboman/nvim-lsp-installer", commit = "ae913cb" })
-    use({ "neovim/nvim-lspconfig", commit = "da7461b" })
+    use({ "williamboman/nvim-lsp-installer", commit = "23820a8" })
+    use({ "neovim/nvim-lspconfig", commit = "9d4b8d3" })
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim", commit = "0a6a16e" })
     use "ray-x/lsp_signature.nvim"
-    use ({ 'glepnir/lspsaga.nvim', commit = "8ca757a" })
-    use { "RRethy/vim-illuminate", commit = "78cf9c1" }
-    use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim", commit = "9d1f8dc" })
+    use ({ 'glepnir/lspsaga.nvim', commit = "5e32611" })
+    use { "RRethy/vim-illuminate", commit = "0603e75" }
+    use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim", commit = "8be9f4f" })
+
+    -- JSON 增强
+    use("b0o/schemastore.nvim")
+    -- Rust 增强
+    use("simrat39/rust-tools.nvim")
+    -- Lua 增强
+    use("folke/lua-dev.nvim")
 
 
     -- Automatically set up your configuration after cloning packer.nvim

@@ -17,6 +17,9 @@ null_ls.setup {
       extra_filetypes = { "toml" },
       extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
     },
+    -- rustfmt
+    -- rustup component add rustfmt
+    formatting.rustfmt,
     formatting.black.with { extra_args = { "--fast" } },
     formatting.stylua,
     formatting.prettier.with({

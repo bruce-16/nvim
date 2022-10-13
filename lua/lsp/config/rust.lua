@@ -1,29 +1,36 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rls
-
-local runtime_path = vim.split(package.path, ';')
-local util = require "lspconfig".util
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
-
+local common = require("lsp.common-config")
 local opts = {
+  capabilities = common.capabilities,
+  flags = common.flags,
+  on_attach = function(client, bufnr)
+    common.disableFormat(client)
+    common.keyAttach(bufnr)
+  end,
   settings = {
-    rust = {
-      unstable_features = true,
-      build_on_save = false,
-      all_features = true,
+    -- to enable rust-analyzer settings visit:
+    -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+    ["rust-analyzer"] = {
+      -- enable clippy on save
+      checkOnSave = {
+        command = "clippy",
+      },
     },
-    cmd = {"rustup", "run", "nightly", "rls"},
-    filetypes = {"rust"},
-    root_dir = util.root_pattern("Cargo.toml"),
-  },
-  flags = {
-    debounce_text_changes = 150,
   },
 }
 
 return {
-  on_setup = function(server, defaultOpts)
-    local options = vim.tbl_deep_extend("force", opts, defaultOpts)
-    server.setup(options)
+  on_setup = function(server)
+    local ok_rt, rust_tools = pcall(require, "rust-tools")
+    if not ok_rt then
+      print("Failed to load rust tools, will set up `rust_analyzer` without `rust-tools`.")
+      server.setup(opts)
+    else
+      -- We don't want to call lspconfig.rust_analyzer.setup() when using rust-tools
+      rust_tools.setup({
+        server = opts,
+        -- dap = require("dap.nvim-dap.rust"),
+      })
+    end
   end,
 }

@@ -53,12 +53,14 @@ lualine.setup({
   sections = {
     lualine_a = { { "mode", fmt = function(str) return str:sub(1,1) end } },
     lualine_b = { "branch" },
-    lualine_c = { diagnostics, {
-      "lsp_progress",
-      display_components = { 'lsp_client_name', { 'title', 'percentage' }},
-      timer = { progress_enddelay = 1000, spinner = 1000, lsp_client_name_enddelay = 1000 },
-      spinner_symbols = { '🌑 ', '🌒 ', '🌓 ', '🌔 ', '🌕 ', '🌖 ', '🌗 ', '🌘 ' },
-    }},
+    lualine_c = { diagnostics , 
+    -- {
+    --   "lsp_progress",
+    --   display_components = { 'lsp_client_name', { 'title', 'percentage' }},
+    --   timer = { progress_enddelay = 1000, spinner = 1000, lsp_client_name_enddelay = 1000 },
+    --   spinner_symbols = { '🌑 ', '🌒 ', '🌓 ', '🌔 ', '🌕 ', '🌖 ', '🌗 ', '🌘 ' },
+    -- }
+    },
     lualine_x = { "filesize", diff, spaces, "encoding", filetype },
     lualine_y = { location },
     lualine_z = { "progress" },
