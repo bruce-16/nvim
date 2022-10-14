@@ -1,6 +1,6 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver
 local common = require("lsp.common-config")
-local keybindings = require("keybindings")
+-- local keybindings = require("keybindings")
 local ts_utils = require("nvim-lsp-ts-utils")
 local opts = {
   flags = common.flags,
@@ -11,17 +11,16 @@ local opts = {
   -- make inlay hints work
   init_options = {
     hostInfo = "neovim",
-    preferences = {
-      -- includeInlayParameterNameHints = "all",
-      -- includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-      -- includeInlayFunctionParameterTypeHints = true,
-      -- includeInlayVariableTypeHints = true,
-      -- includeInlayPropertyDeclarationTypeHints = true,
-      -- includeInlayFunctionLikeReturnTypeHints = true,
-      -- includeInlayEnumMemberValueHints = true,
-    },
+    -- preferences = {
+    --   includeInlayParameterNameHints = "literals",
+    --   includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+    --   includeInlayFunctionParameterTypeHints = true,
+    --   includeInlayVariableTypeHints = true,
+    --   includeInlayPropertyDeclarationTypeHints = true,
+    --   includeInlayFunctionLikeReturnTypeHints = true,
+    --   includeInlayEnumMemberValueHints = true,
+    -- },
   },
-
   on_attach = function(client, bufnr)
     common.disableFormat(client)
     common.keyAttach(bufnr)

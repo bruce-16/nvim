@@ -1,18 +1,36 @@
-local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_status_ok then
-  return
-end
-
--- local lsp_installer = require("nvim-lsp-installer")
-require("nvim-lsp-installer").setup({
-  -- 自动安装 Language Servers
-  automatic_installation = true,
+-- :h mason-default-settings
+-- ~/.local/share/nvim/mason
+require("mason").setup({
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗",
+    },
+  },
 })
 
+-- mason-lspconfig uses the `lspconfig` server names in the APIs it exposes - not `mason.nvim` package names
+-- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
+require("mason-lspconfig").setup({
+  ensure_installed = {
+    "sumneko_lua",
+    "typescript-language-server",
+    "tailwindcss",
+    "bashls",
+    "cssls",
+    "html",
+    "jsonls",
+    "rust_analyzer",
+    "cspell",
+  },
+})
+
+local lspconfig = require("lspconfig")
 -- 安装列表
 -- { key: 语言 value: 配置文件 }
 -- key 必须为下列网址列出的名称
--- https://github.com/williamboman/nvim-lsp-installer#available-lsps
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver
 local servers = {
   sumneko_lua = require("lsp.config.lua"), -- lua/lsp/config/lua.lua
   tsserver = require("lsp.config.ts"), -- lua/lsp/config/ts.lua
@@ -21,7 +39,7 @@ local servers = {
   jsonls = require "lsp.config.json", -- lua/lsp/config/json
   html = require "lsp.config.html", -- lua/lsp/config/html
   cssls = require "lsp.config.css", -- lua/lsp/config/css
-  cssmodules_ls = require "lsp.config.cssmodule", -- lua/lsp/config/cssmodule
+  -- cssmodules_ls = require "lsp.config.cssmodule", -- lua/lsp/config/cssmodule
 }
 
 for name, config in pairs(servers) do

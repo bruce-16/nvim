@@ -82,8 +82,11 @@ packer.startup({
     -- git
     use 'lewis6991/gitsigns.nvim'
 
+    -- lsp installer
+    use({ "williamboman/mason.nvim" })
+    use({ "williamboman/mason-lspconfig.nvim" })
+
     -- lsp
-    use({ "williamboman/nvim-lsp-installer", commit = "23820a8" })
     use({ "neovim/nvim-lspconfig", commit = "9d4b8d3" })
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim", commit = "0a6a16e" })
     use "ray-x/lsp_signature.nvim"
@@ -96,8 +99,7 @@ packer.startup({
     -- Rust 增强
     use("simrat39/rust-tools.nvim")
     -- Lua 增强
-    use("folke/lua-dev.nvim")
-
+    use "folke/neodev.nvim"
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
