@@ -132,7 +132,7 @@ pluginKeys.telescopeList = {
 pluginKeys.mapLSP = function(mapbuf)
   mapbuf("n", "<leader>=", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
   mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
-  mapbuf("n", "gD", "<cmd>Lspsaga preview_definition<CR>", opt)
+  mapbuf("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opt)
   -- mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
   mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
   mapbuf("n", "gI", "<cmd>Telescope lsp_implementations<CR>", opt)
@@ -142,7 +142,7 @@ pluginKeys.mapLSP = function(mapbuf)
   -- mapbuf("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opt)
   -- mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
   mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
-  mapbuf("n", "gs", "<cmd>Lspsaga signature_help<CR>", opt)
+  mapbuf("n", "gP", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opt)
 end
 
 -- ======
@@ -203,6 +203,17 @@ pluginKeys.whichKeyMapForNormal = {
       "Sort by language",
     },
   },
+  d = {
+    name = "dap",
+    -- d = { ":call vimspector#Launch()<CR>", "Launch"},
+    -- e = { ":call vimspector#Reset()<CR>", "Reset"},
+    -- c = { ":call vimspector#Continue()<CR>", "Continue"},
+    -- t = { ":call vimspector#ToggleBreakpoint()<CR>", "Toggle Breakpoint"},
+    -- T = { ":call vimspector#ClearBreakpoints()<CR>", "Clear Breakpoints"},
+    -- j = { "<Plug>VimspectorStepOver", "Step Over"},
+    -- k = { "<Plug>VimspectorStepOut", "Step Out"},
+    -- l = { "<Plug>VimspectorStepInto", "Step Into"},
+  },
   l = {
     name = "lsp",
     -- a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
@@ -233,7 +244,7 @@ pluginKeys.whichKeyMapForNormal = {
       end,
       "Show line diagnostics",
     },
-    I = { "<cmd>LspInstallInfo<CR>", "Installer Info" },
+    I = { "<cmd>LspInfo<CR>", "Lsp Info" },
     -- j = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic" },
     -- k = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Prev Diagnostic" },
     j = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Next Diagnostic" },
@@ -258,11 +269,10 @@ pluginKeys.whichKeyMapForNormal = {
   },
   s = {
     name = "Search",
+    a = {"<cmd>Telescope file_browser<CR>", "File Browser"},
     b = { "<cmd>Telescope git_branches<CR>", "Checkout branch" },
-    -- c = { "<cmd>Telescope colorscheme<CR>", "Colorscheme" },
     f = { "<cmd>Telescope find_files<CR>", "File" },
     h = { "<cmd>Telescope help_tags<CR>", "Help" },
-    M = { "<cmd>Telescope man_pages<CR>", "Man Pages" },
     r = { "<cmd>Telescope oldfiles<CR>", "Open Recent File" },
     R = { "<cmd>Telescope registers<CR>", "Registers" },
     t = { "<cmd>Telescope live_grep<CR>", "Live Grep Case Smart" },
@@ -271,10 +281,7 @@ pluginKeys.whichKeyMapForNormal = {
     c = { require("plugin-config.telescope.custom-finder").live_grep_case_sensitive, "Live Search Case Sensitively" },
     k = { "<cmd>Telescope keymaps<CR>", "Keymaps" },
     C = { "<cmd>Telescope commands<CR>", "Commands" },
-    p = {
-      "<cmd>lua require('telescope.builtin.internal').colorscheme({enable_preview = true})<CR>",
-      "Colorscheme with Preview",
-    },
+    M = { "<cmd>Telescope man_pages<CR>", "Man Pages" },
   },
   w = {
     name = "windows",

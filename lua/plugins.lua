@@ -47,15 +47,17 @@ packer.startup({
     use({ "akinsho/bufferline.nvim", requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" }, commit = "0606cee" })
     use("arkav/lualine-lsp-progress")
     use({'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true, commit = "edca2b0" }})
-    use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim", commit = "5fadc24" } }
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make', commit = "65c0ee3" }
-    use({ "nvim-telescope/telescope-ui-select.nvim" })
-    use { "LinArcX/telescope-env.nvim" }
     use 'psliwka/vim-smoothie' -- scroll
     use({ 'christoomey/vim-tmux-navigator' }) -- tmux + vim navigator
     use({ "akinsho/toggleterm.nvim" }) -- terminal
     use({ "folke/which-key.nvim", commit = "6885b66" }) -- which-key
     use { "lewis6991/impatient.nvim" }
+    use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim", commit = "5fadc24" } }
+    
+    -- telescope 增强
+    use { "nvim-telescope/telescope-file-browser.nvim" }
+    use({ "nvim-telescope/telescope-ui-select.nvim" })
+    use { "LinArcX/telescope-env.nvim" }
 
     -- coding plugin
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", commit = "5d11dfc" })
@@ -90,9 +92,12 @@ packer.startup({
     use({ "neovim/nvim-lspconfig", commit = "9d4b8d3" })
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim", commit = "0a6a16e" })
     use "ray-x/lsp_signature.nvim"
-    use ({ 'glepnir/lspsaga.nvim', commit = "5e32611" })
+    use ({ 'glepnir/lspsaga.nvim', commit = "5f17b9b" })
     use { "RRethy/vim-illuminate", commit = "0603e75" }
     use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim", commit = "8be9f4f" })
+
+    -- dap
+    use("puremourning/vimspector")
 
     -- JSON 增强
     use("b0o/schemastore.nvim")

@@ -25,7 +25,8 @@ end
 function M.live_grep_strict()
   local vimgrep_arguments = {
     "rg",
-    "--color=never",
+    "--colors=line:style:bold",
+    -- "--color=never",
     "--no-heading",
     "--line-number",
     "--column",

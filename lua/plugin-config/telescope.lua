@@ -51,61 +51,24 @@ telescope.setup({
   pickers = {
     find_files = {
       hidden = true,
+      theme = "ivy",
     },
     live_grep = {
       --@usage don't include the filename in the search results
       only_sort_text = true,
+      theme = "ivy",
     },
-    -- find_files = {
-    --   theme = "ivy",
-    -- },
-    -- git_files = {
-    --   theme = "ivy",
-    -- },
-    -- git_status = {
-    --   theme = "ivy",
-    -- },
-    -- buffers = {
-    --   theme = "ivy",
-    -- },
-    -- marks = {
-    --   theme = "ivy",
-    -- },
-    -- live_grep = {
-    --   theme = "ivy",
-    -- },
-    -- grep_string = {
-    --   theme = "ivy",
-    -- },
-    -- lsp_references = {
-    --   theme = "ivy",
-    -- },
   },
   extensions = {
-    fzf = {
-      fuzzy = true,                    -- false will only do exact matching
-      override_generic_sorter = true,  -- override the generic sorter
-      override_file_sorter = true,     -- override the file sorter
-      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                       -- the default case_mode is "smart_case"
+    file_browser = {
+      theme = "ivy",
+      -- disables netrw and use telescope-file-browser in its place
+      hijack_netrw = true
     },
-    lazygit = {
-      lazygit_floating_window_winblend = 0, -- transparency of floating window
-      lazygit_floating_window_scaling_factor = 0.9, -- scaling factor for floating window
-      lazygit_floating_window_corner_chars = { '╭', '╮', '╰', '╯' }, -- customize lazygit popup window corner characters
-      lazygit_floating_window_use_plenary = 0, -- use plenary.nvim to manage floating window if available
-      lazygit_use_neovim_remote = 0, -- fallback to 0 if neovim-remote is not installed
-    },
-    ["ui-select"] = {
-      require("telescope.themes").get_dropdown({
-        -- even more opts
-      }),
-    },
-  },
+  }
 })
 
-pcall(telescope.load_extension, "fzf")
 pcall(telescope.load_extension, "env")
 pcall(telescope.load_extension, "ui-select")
--- pcall(telescope.load_extension, "lazygit")
+pcall(telescope.load_extension, "file_browser")
 

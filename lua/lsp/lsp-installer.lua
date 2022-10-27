@@ -15,7 +15,7 @@ require("mason").setup({
 require("mason-lspconfig").setup({
   ensure_installed = {
     "sumneko_lua",
-    "typescript-language-server",
+    "tsserver",
     "tailwindcss",
     "bashls",
     "cssls",
@@ -34,7 +34,6 @@ local lspconfig = require("lspconfig")
 local servers = {
   sumneko_lua = require("lsp.config.lua"), -- lua/lsp/config/lua.lua
   tsserver = require("lsp.config.ts"), -- lua/lsp/config/ts.lua
-  rls = require "lsp.config.rust", -- lua/lsp/config/ts
   rust_analyzer = require "lsp.config.rust", -- lua/lsp/config/rust
   jsonls = require "lsp.config.json", -- lua/lsp/config/json
   html = require "lsp.config.html", -- lua/lsp/config/html
