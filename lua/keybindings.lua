@@ -163,7 +163,7 @@ map("n", "<leader><leader>h", ":HopWordCurrentLineBC<CR>", opt)
 
 pluginKeys.whichKeyMapForNormal = {
   ["c"] = { "<cmd>BufferKill<CR>", "Close Buffer" },
-  ["f"] = { require("plugin-config.telescope.custom-finder").find_project_files, "Find File" },
+  ["f"] = { "<cmd>Telescope git_files<CR>", "Find Git Files" },
   -- lsp 基本操作
   -- ["gh"] = { vim.lsp.buf.hover, "Show hover" },
   -- ["gI"] = { "<cmd>Telescope lsp_implementations<CR>", "Goto Implementation" },
@@ -221,6 +221,7 @@ pluginKeys.whichKeyMapForNormal = {
     d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<CR>", "Buffer Diagnostics" },
     w = { "<cmd>Telescope diagnostics<CR>", "Diagnostics" },
     i = { "<cmd>LspInfo<CR>", "Info" },
+    c = { ":lua require('neogen').generate()", "Generator Doc Comment"},
     l = {
       function()
         local config = {

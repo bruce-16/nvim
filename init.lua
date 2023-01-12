@@ -26,6 +26,7 @@ require("plugin-config.comment")
 require("plugin-config.illuminate")
 require("plugin-config.impatient")
 require("plugin-config.nvim-surround")
+require("plugin-config.neogen")
 
 -- autocommands
 require('autocommands')

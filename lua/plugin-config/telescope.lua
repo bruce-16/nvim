@@ -53,6 +53,9 @@ telescope.setup({
       hidden = true,
       theme = "ivy",
     },
+    git_files = {
+      theme = "ivy",
+    },
     live_grep = {
       --@usage don't include the filename in the search results
       only_sort_text = true,

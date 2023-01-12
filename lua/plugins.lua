@@ -97,7 +97,6 @@ packer.startup({
     use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim", commit = "8be9f4f" })
 
     -- dap
-    use("puremourning/vimspector")
 
     -- JSON 增强
     use("b0o/schemastore.nvim")
@@ -105,6 +104,8 @@ packer.startup({
     use("simrat39/rust-tools.nvim")
     -- Lua 增强
     use "folke/neodev.nvim"
+    -- comment 增强，jsdoc、tsdoc 等
+    use { "danymat/neogen", requires = "nvim-treesitter/nvim-treesitter" }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

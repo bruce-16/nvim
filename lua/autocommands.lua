@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "gitcommit", "markdown" },
   callback = function()
     vim.opt_local.wrap = true
-    vim.opt_local.spell = true
+    -- vim.opt_local.spell = true
   end,
 })
 
@@ -36,15 +36,15 @@ local autocmd = vim.api.nvim_create_autocmd
 -- })
 
 -- 用o换行不要延续注释
-autocmd("BufEnter", {
-  group = myAutoGroup,
-  pattern = "*",
-  callback = function()
-    vim.opt.formatoptions = vim.opt.formatoptions
-      - "o" -- O and o, don't continue comments
-      + "r" -- But do continue when pressing enter.
-  end,
-})
+-- autocmd("BufEnter", {
+--   group = myAutoGroup,
+--   pattern = "*",
+--   callback = function()
+--     vim.opt.formatoptions = vim.opt.formatoptions
+--       - "o" -- O and o, don't continue comments
+--       + "r" -- But do continue when pressing enter.
+--   end,
+-- })
 
 -- Highlight on yank
 autocmd("TextYankPost", {
@@ -56,10 +56,9 @@ autocmd("TextYankPost", {
 })
 
 -- Fixes Autocomment
-autocmd("BufWinEnter", {
-  group = myAutoGroup,
-  pattern = "*",
-  command = "set formatoptions-=cro",
-})
+-- autocmd("BufWinEnter", {
+--   group = myAutoGroup,
+--   pattern = "*",
+--   command = "set formatoptions-=cro",
+-- })
 
-vim.cmd "autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif"

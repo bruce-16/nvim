@@ -11,15 +11,15 @@ local opts = {
   -- make inlay hints work
   init_options = {
     hostInfo = "neovim",
-    -- preferences = {
-    --   includeInlayParameterNameHints = "literals",
-    --   includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-    --   includeInlayFunctionParameterTypeHints = true,
-    --   includeInlayVariableTypeHints = true,
-    --   includeInlayPropertyDeclarationTypeHints = true,
-    --   includeInlayFunctionLikeReturnTypeHints = true,
-    --   includeInlayEnumMemberValueHints = true,
-    -- },
+    preferences = {
+      includeInlayParameterNameHints = "literals",
+      includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+      includeInlayFunctionParameterTypeHints = true,
+      includeInlayVariableTypeHints = true,
+      includeInlayPropertyDeclarationTypeHints = true,
+      includeInlayFunctionLikeReturnTypeHints = true,
+      includeInlayEnumMemberValueHints = true,
+    },
   },
   on_attach = function(client, bufnr)
     common.disableFormat(client)
